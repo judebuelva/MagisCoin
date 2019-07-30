@@ -1,0 +1,49 @@
+<h1>Register an Account</h1>
+
+<%= form_for(@user, :url=>{:action => 'create_customer'}) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Firstname"%>
+    <%= form.text_field :f_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :l_name %>
+    <%= form.text_field :l_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_num %>
+    <%= form.number_field :contact_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
