@@ -1,0 +1,2 @@
+class ReceiveLoad < ApplicationRecord
+end

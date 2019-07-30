@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Receive Loads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Send</th>
+      <th>Recv</th>
+      <th>Amount</th>
+      <th>Date time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receive_loads.each do |receive_load| %>
+      <tr>
+        <td><%= receive_load.send_id %></td>
+        <td><%= receive_load.recv_id %></td>
+        <td><%= receive_load.amount %></td>
+        <td><%= receive_load.date_time %></td>
+        <td><%= link_to 'Show', receive_load %></td>
+        <td><%= link_to 'Edit', edit_receive_load_path(receive_load) %></td>
+        <td><%= link_to 'Destroy', receive_load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Receive Load', new_receive_load_path %>

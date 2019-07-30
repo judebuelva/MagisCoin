@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Merchant name:</strong>
+  <%= @reward.merchant_name %>
+</p>
+
+<p>
+  <strong>Reward name:</strong>
+  <%= @reward.reward_name %>
+</p>
+
+<p>
+  <strong>Reward value:</strong>
+  <%= @reward.reward_value %>
+</p>
+
+<p>
+  <strong>Expiry date:</strong>
+  <%= @reward.expiry_date %>
+</p>
+
+<%= link_to 'Edit', edit_reward_path(@reward) %> |
+<%= link_to 'Back', rewards_path %>

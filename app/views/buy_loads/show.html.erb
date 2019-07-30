@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Send:</strong>
+  <%= @buy_load.send_id %>
+</p>
+
+<p>
+  <strong>Recv:</strong>
+  <%= @buy_load.recv_id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @buy_load.amount %>
+</p>
+
+<p>
+  <strong>Date time:</strong>
+  <%= @buy_load.date_time %>
+</p>
+
+<%= link_to 'Edit', edit_buy_load_path(@buy_load) %> |
+<%= link_to 'Back', buy_loads_path %>

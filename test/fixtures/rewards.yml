@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  merchant_name: MyString
+  reward_name: MyString
+  reward_value: 1.5
+  expiry_date: 2019-07-26
+
+two:
+  merchant_name: MyString
+  reward_name: MyString
+  reward_value: 1.5
+  expiry_date: 2019-07-26

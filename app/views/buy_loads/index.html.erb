@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buy Loads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Send</th>
+      <th>Recv</th>
+      <th>Amount</th>
+      <th>Date time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buy_loads.each do |buy_load| %>
+      <tr>
+        <td><%= buy_load.send_id %></td>
+        <td><%= buy_load.recv_id %></td>
+        <td><%= buy_load.amount %></td>
+        <td><%= buy_load.date_time %></td>
+        <td><%= link_to 'Show', buy_load %></td>
+        <td><%= link_to 'Edit', edit_buy_load_path(buy_load) %></td>
+        <td><%= link_to 'Destroy', buy_load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buy Load', new_buy_load_path %>

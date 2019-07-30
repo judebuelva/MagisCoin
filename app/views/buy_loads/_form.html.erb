@@ -1,0 +1,37 @@
+<%= form_with(model: buy_load, local: true) do |form| %>
+  <% if buy_load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(buy_load.errors.count, "error") %> prohibited this buy_load from being saved:</h2>
+
+      <ul>
+      <% buy_load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :send_id %>
+    <%= form.number_field :send_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recv_id %>
+    <%= form.number_field :recv_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_time %>
+    <%= form.datetime_select :date_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
