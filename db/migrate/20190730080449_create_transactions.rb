@@ -4,6 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.integer :send_id
       t.integer :recv_id
       t.integer :card_id
+      t.string :purchase_type
       t.float :amount
       t.datetime :time_recorded
 

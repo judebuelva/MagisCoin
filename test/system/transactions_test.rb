@@ -16,6 +16,7 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @transaction.amount
     fill_in "Card", with: @transaction.card_id
+    fill_in "Purchase type", with: @transaction.purchase_type
     fill_in "Recv", with: @transaction.recv_id
     fill_in "Send", with: @transaction.send_id
     fill_in "Time recorded", with: @transaction.time_recorded
@@ -31,6 +32,7 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @transaction.amount
     fill_in "Card", with: @transaction.card_id
+    fill_in "Purchase type", with: @transaction.purchase_type
     fill_in "Recv", with: @transaction.recv_id
     fill_in "Send", with: @transaction.send_id
     fill_in "Time recorded", with: @transaction.time_recorded

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_071758) do
+ActiveRecord::Schema.define(version: 2019_07_30_080449) do
 
   create_table "buy_loads", force: :cascade do |t|
     t.integer "send_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_071758) do
     t.integer "send_id"
     t.integer "recv_id"
     t.integer "card_id"
+    t.string "purchase_type"
     t.float "amount"
     t.datetime "time_recorded"
     t.datetime "created_at", null: false

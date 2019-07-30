@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
     has_many :recv_transactions, foreign_key: "recv_id", class_name: "Transaction"
     has_many :recvs, through: :recv_transactions, source: :user_2
-    
+
     validates :email, format: {with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: "Please enter right format"}#/\A[\w+\-.]+@[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email,  presence: true, uniqueness: true
 	validates :contact_num, presence: true

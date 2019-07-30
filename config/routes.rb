@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
   resources :transactions
+  resources :users
   resources :cards
   resources :rewards
   resources :qrs

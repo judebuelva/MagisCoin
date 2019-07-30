@@ -8,6 +8,7 @@
       <th>Send</th>
       <th>Recv</th>
       <th>Card</th>
+      <th>Purchase type</th>
       <th>Amount</th>
       <th>Time recorded</th>
       <th colspan="3"></th>
@@ -20,6 +21,7 @@
         <td><%= transaction.send_id %></td>
         <td><%= transaction.recv_id %></td>
         <td><%= transaction.card_id %></td>
+        <td><%= transaction.purchase_type %></td>
         <td><%= transaction.amount %></td>
         <td><%= transaction.time_recorded %></td>
         <td><%= link_to 'Show', transaction %></td>
@@ -33,7 +35,3 @@
 <br>
 
 <%= link_to 'New Transaction', new_transaction_path %>
-<%= @user = User.find(2) %>
-<% @user.send_transactions.each do |s| %>
-<td> <%= s.amount %> </td>
-<% end %>
