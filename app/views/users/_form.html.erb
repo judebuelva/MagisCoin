@@ -68,7 +68,11 @@
 
   <div class="field">
     <%= form.label :user_type %>
-    <%= form.text_field :user_type %>
+    <select name="user[user_type]" id="user_user_type">
+        <option value="A">Admin</option>
+        <option value="C">Customer</option>
+        <option value="M">Merchant</option>
+    </select>
   </div>
 
   <div class="actions">

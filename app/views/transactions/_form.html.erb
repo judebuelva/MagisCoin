@@ -28,7 +28,11 @@
 
   <div class="field">
     <%= form.label :purchase_type %>
-    <%= form.text_field :purchase_type %>
+    <select name="transaction[purchase_type]" id="transaction_purchase_type">
+        <option value="0">Buy Load</option>
+        <option value="1">Send Load</option>
+        <option value="2">Receive Load</option>
+    </select>
   </div>
 
   <div class="field">
