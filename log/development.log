@@ -1,0 +1,670 @@
+Started GET "/users" for ::1 at 2019-07-30 16:11:42 +0800
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (100.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (88.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to Transactions (20190726055923)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726055923"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (64.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateBuyLoads (20190726061614)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "buy_loads" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "send_id" integer, "recv_id" integer, "amount" float, "date_time" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726061614_create_buy_loads.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726061614"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (78.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreatePurchases (20190726062130)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "purchases" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "send_id" integer, "recv_id" integer, "purchase_type" varchar, "amount" float, "date_time" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726062130_create_purchases.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726062130"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (141.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateReceiveLoads (20190726062210)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "receive_loads" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "send_id" integer, "recv_id" integer, "amount" float, "date_time" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726062210_create_receive_loads.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726062210"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (90.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to User (20190726064446)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726064446"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (46.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateQrs (20190726071732)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "qrs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726071732_create_qrs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726071732"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (96.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateRewards (20190726071910)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "rewards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "merchant_name" varchar, "reward_name" varchar, "reward_value" float, "expiry_date" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726071910_create_rewards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726071910"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (128.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCards (20190726072049)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "cards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "card_name" varchar, "expiry_date" date, "activation_stat" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190726072049_create_cards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190726072049"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (123.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateUsers (20190730071758)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "f_name" varchar, "l_name" varchar, "birthday" date, "role" varchar, "merchant_name" varchar, "owner_fname" varchar, "owner_lname" varchar, "email" varchar, "contact_num" integer, "address" varchar, "balance" float, "user_type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190730071758_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190730071758"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (107.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateTransactions (20190730080449)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "send_id" integer, "recv_id" integer, "card_id" integer, "purchase_type" varchar, "amount" float, "time_recorded" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190730080449_create_transactions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190730080449"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (106.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-30 08:12:03.483440"], ["updated_at", "2019-07-30 08:12:03.483440"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (80.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/users" for ::1 at 2019-07-30 16:12:12 +0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 2209ms (Views: 2164.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets" for ::1 at 2019-07-30 16:12:23 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/tickets"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/transactions" for ::1 at 2019-07-30 16:12:27 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 38ms (Views: 31.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/qr_codes" for ::1 at 2019-07-30 16:16:03 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/qr_codes"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/qrs" for ::1 at 2019-07-30 16:16:09 +0800
+Processing by QrsController#index as HTML
+  Rendering qrs/index.html.erb within layouts/application
+  [1m[36mQr Load (0.2ms)[0m  [1m[34mSELECT "qrs".* FROM "qrs"[0m
+  ↳ app/views/qrs/index.html.erb:14
+  Rendered qrs/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 44ms (Views: 38.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/transactions" for ::1 at 2019-07-30 16:43:01 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 63ms (Views: 61.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-07-30 16:43:02 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (79.4ms)
+  Rendered transactions/new.html.erb within layouts/application (80.2ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    29:   <div class="field">
+    30:     <%= form.label :purchase_type %>
+    31:     <%= form.text_field :purchase_type %>
+    32:     <% form_for(@message) do |f| %>
+    33:       <%= f.radio_button :contactmethod, 'email', :checked => true %>
+    34:       <%= label :contactmethod_email, 'Email' %>
+    35:       <%= f.radio_button :contactmethod, 'sms' %>
+  
+app/views/transactions/_form.html.erb:32:in `block in _app_views_transactions__form_html_erb___1269148676232842382_70176178177900'
+app/views/transactions/_form.html.erb:1:in `_app_views_transactions__form_html_erb___1269148676232842382_70176178177900'
+app/views/transactions/new.html.erb:3:in `_app_views_transactions_new_html_erb___2101838235583098086_70176178167020'
+Started GET "/transactions" for ::1 at 2019-07-30 16:43:07 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 33ms (Views: 31.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/buy_loads" for ::1 at 2019-07-30 17:11:41 +0800
+Processing by BuyLoadsController#index as HTML
+  Rendering buy_loads/index.html.erb within layouts/application
+  [1m[36mBuyLoad Load (0.3ms)[0m  [1m[34mSELECT "buy_loads".* FROM "buy_loads"[0m
+  ↳ app/views/buy_loads/index.html.erb:17
+  Rendered buy_loads/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 33ms (Views: 29.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/buy_loads/new" for ::1 at 2019-07-30 17:17:30 +0800
+Processing by BuyLoadsController#new as HTML
+  Rendering buy_loads/new.html.erb within layouts/application
+  Rendered buy_loads/_form.html.erb (33.4ms)
+  Rendered buy_loads/new.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 66ms (Views: 57.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/buy_loads" for ::1 at 2019-07-30 17:17:32 +0800
+Processing by BuyLoadsController#index as HTML
+  Rendering buy_loads/index.html.erb within layouts/application
+  [1m[36mBuyLoad Load (0.3ms)[0m  [1m[34mSELECT "buy_loads".* FROM "buy_loads"[0m
+  ↳ app/views/buy_loads/index.html.erb:17
+  Rendered buy_loads/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/buy_loads/new" for ::1 at 2019-07-30 17:17:46 +0800
+Processing by BuyLoadsController#new as HTML
+  Rendering buy_loads/new.html.erb within layouts/application
+  Rendered buy_loads/_form.html.erb (6.5ms)
+  Rendered buy_loads/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 55ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/buy_loads" for ::1 at 2019-07-30 17:17:47 +0800
+Processing by BuyLoadsController#index as HTML
+  Rendering buy_loads/index.html.erb within layouts/application
+  [1m[36mBuyLoad Load (0.1ms)[0m  [1m[34mSELECT "buy_loads".* FROM "buy_loads"[0m
+  ↳ app/views/buy_loads/index.html.erb:17
+  Rendered buy_loads/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 34ms (Views: 31.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/buy_loads/new" for ::1 at 2019-07-30 17:17:52 +0800
+Processing by BuyLoadsController#new as HTML
+  Rendering buy_loads/new.html.erb within layouts/application
+  Rendered buy_loads/_form.html.erb (7.4ms)
+  Rendered buy_loads/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/buy_loads" for ::1 at 2019-07-30 17:17:55 +0800
+Processing by BuyLoadsController#index as HTML
+  Rendering buy_loads/index.html.erb within layouts/application
+  [1m[36mBuyLoad Load (0.2ms)[0m  [1m[34mSELECT "buy_loads".* FROM "buy_loads"[0m
+  ↳ app/views/buy_loads/index.html.erb:17
+  Rendered buy_loads/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 37ms (Views: 34.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rewards" for ::1 at 2019-07-30 17:18:26 +0800
+Processing by RewardsController#index as HTML
+  Rendering rewards/index.html.erb within layouts/application
+  [1m[36mReward Load (0.3ms)[0m  [1m[34mSELECT "rewards".* FROM "rewards"[0m
+  ↳ app/views/rewards/index.html.erb:17
+  Rendered rewards/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 36ms (Views: 32.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/rewards/new" for ::1 at 2019-07-30 17:19:20 +0800
+Processing by RewardsController#new as HTML
+  Rendering rewards/new.html.erb within layouts/application
+  Rendered rewards/_form.html.erb (4.4ms)
+  Rendered rewards/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 56ms (Views: 45.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rewards" for ::1 at 2019-07-30 17:19:23 +0800
+Processing by RewardsController#index as HTML
+  Rendering rewards/index.html.erb within layouts/application
+  [1m[36mReward Load (0.2ms)[0m  [1m[34mSELECT "rewards".* FROM "rewards"[0m
+  ↳ app/views/rewards/index.html.erb:17
+  Rendered rewards/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 34ms (Views: 32.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/transactions" for ::1 at 2019-07-30 17:29:03 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 40ms (Views: 33.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-07-30 17:30:33 +0800
+Processing by TransactionsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+...lidates :time_recorded presence: true
+...                       ^~~~~~~~):
+  
+app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/transactions_controller.rb:17:in `new'
+Started POST "/__web_console/repl_sessions/1b6ace56425e6f26d9e060c9999de1ed/trace" for ::1 at 2019-07-30 17:30:50 +0800
+Started POST "/__web_console/repl_sessions/1b6ace56425e6f26d9e060c9999de1ed/trace" for ::1 at 2019-07-30 17:30:51 +0800
+Started POST "/__web_console/repl_sessions/1b6ace56425e6f26d9e060c9999de1ed/trace" for ::1 at 2019-07-30 17:30:53 +0800
+Started GET "/transactions/new" for ::1 at 2019-07-30 17:31:03 +0800
+Processing by TransactionsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+...lidates :time_recorded presence: true
+...                       ^~~~~~~~):
+  
+app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/transactions_controller.rb:17:in `new'
+Started GET "/transactions/new" for ::1 at 2019-07-30 17:31:04 +0800
+Processing by TransactionsController#new as HTML
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+...lidates :time_recorded presence: true
+...                       ^~~~~~~~):
+  
+app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/transactions_controller.rb:17:in `new'
+Started GET "/transactions/new" for ::1 at 2019-07-30 17:31:05 +0800
+Processing by TransactionsController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+...lidates :time_recorded presence: true
+...                       ^~~~~~~~):
+  
+app/models/transaction.rb:9: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/transactions_controller.rb:17:in `new'
+Started POST "/__web_console/repl_sessions/eb87112154232ebb5dd710ba7929db95/trace" for ::1 at 2019-07-30 17:31:10 +0800
+Started GET "/transactions/new" for ::1 at 2019-07-30 17:31:37 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (4.4ms)
+  Rendered transactions/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 44ms (Views: 31.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cards" for ::1 at 2019-07-30 17:41:31 +0800
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.1ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  ↳ app/views/cards/index.html.erb:17
+  Rendered cards/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 29ms (Views: 26.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cards/new" for ::1 at 2019-07-30 17:44:30 +0800
+Processing by CardsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/models/card.rb:5: syntax error, unexpected ':', expecting end
+    validates: activation_stat
+             ^):
+  
+app/models/card.rb:5: syntax error, unexpected ':', expecting end
+app/controllers/cards_controller.rb:17:in `new'
+Started GET "/cards/new" for ::1 at 2019-07-30 17:49:55 +0800
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered cards/_form.html.erb (5.0ms)
+  Rendered cards/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 46ms (Views: 35.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user/new_customer" for ::1 at 2019-07-30 18:13:57 +0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/user/new_customer"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/user/new/customer" for ::1 at 2019-07-30 18:14:10 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/user/new/customer"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new/customer" for ::1 at 2019-07-30 18:14:17 +0800
+Processing by UsersController#new_customer as HTML
+  Rendering users/new_customer.html.erb within layouts/application
+  Rendered users/new_customer.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 277ms (Views: 248.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:15:19 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `fname=' for #<User:0x00007fd110098358>
+Did you mean?  f_name=
+               f_name
+               f_name?
+               l_name=):
+  
+app/controllers/users_controller.rb:26:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:15:54 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `fname=' for #<User:0x00007fd12185eb58>
+Did you mean?  f_name=
+               f_name
+               f_name?
+               l_name=):
+  
+app/controllers/users_controller.rb:26:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:16:33 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pong@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+Redirected to 
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `to_model' for /users/:Regexp
+Did you mean?  to_yaml):
+  
+app/controllers/users_controller.rb:35:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:16:42 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pong@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+Redirected to 
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `to_model' for /users/:Regexp
+Did you mean?  to_yaml):
+  
+app/controllers/users_controller.rb:35:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:16:57 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pong@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+Redirected to 
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `to_model' for /users/:Regexp
+Did you mean?  to_yaml):
+  
+app/controllers/users_controller.rb:35:in `create_customer'
+Started POST "/__web_console/repl_sessions/ee3c67e9cc166b7fcb32a4e61628fab8/trace" for ::1 at 2019-07-30 18:18:40 +0800
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:18:56 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pong@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+Redirected to 
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `to_model' for /users/:Regexp
+Did you mean?  to_yaml):
+  
+app/controllers/users_controller.rb:35:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:19:11 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aAPKG9YWIAEmc2gqmWGBim312428CQho10yS9ov6JmFqMy/lBmR8t3PLq1pWoGYG4Ey+LUcgHxe5J1Phg0wloA==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lin", "birthday(1i)"=>"2019", "birthday(2i)"=>"7", "birthday(3i)"=>"30", "email"=>"pong@gmail.com", "contact_num"=>"0986547321", "address"=>"Where do i live"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pong@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:34
+Redirected to 
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `to_model' for /users/:Regexp
+Did you mean?  to_yaml):
+  
+app/controllers/users_controller.rb:35:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:19:50 +0800
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/controllers/users_controller.rb:92: unterminated string meets end of file
+/home/justin/Desktop/MagisCoin/app/controllers/users_controller.rb:92: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:92: unterminated string meets end of file
+app/controllers/users_controller.rb:92: syntax error, unexpected end-of-input, expecting end
+Started POST "/__web_console/repl_sessions/f430bc687bba91551f713f34edc1abbe/trace" for ::1 at 2019-07-30 18:19:55 +0800
+Started POST "/__web_console/repl_sessions/f430bc687bba91551f713f34edc1abbe/trace" for ::1 at 2019-07-30 18:19:55 +0800
+Started POST "/__web_console/repl_sessions/f430bc687bba91551f713f34edc1abbe/trace" for ::1 at 2019-07-30 18:20:05 +0800
+Started POST "/users/new/customer" for ::1 at 2019-07-30 18:20:42 +0800
+  
+SyntaxError (/home/justin/Desktop/MagisCoin/app/controllers/users_controller.rb:91: unterminated string meets end of file
+    end
+        ^
+/home/justin/Desktop/MagisCoin/app/controllers/users_controller.rb:91: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:91: unterminated string meets end of file
+app/controllers/users_controller.rb:91: syntax error, unexpected end-of-input, expecting end

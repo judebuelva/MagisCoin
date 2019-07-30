@@ -19,21 +19,21 @@ class UsersController < ApplicationController
 
   def new_customer
     @user = User.new
-end
+  end
 
-    def create_customer
-        @user = User.new()
-        @user.fname = params[:user][:f_name]
-        @user.lname = params[:user][:lname]
-        @user.birthday = params[:user][:birthday]
-        @user.email = params[:user][:email]
-        @user.contact_num = params[:user][:contact_num]
-        @user.address = params[:user][:address]
-        #@User.balance = 0
-        #all fields that should be null (nil) or 0
-        @user.save
-        redirect_to /users/#{@user.id}"
-    end
+  def create_customer
+      @user = User.new
+      @user.f_name = params[:user][:f_name]
+      @user.l_name = params[:user][:l_name]
+      @user.birthday = params[:user][:birthday]
+      @user.email = params[:user][:email]
+      @user.contact_num = params[:user][:contact_num]
+      @user.address = params[:user][:address]
+      @user.balance = 0
+      #all fields that should be null (nil) or 0
+      @user.save
+      redirect_to "/users/#{@user.id}"
+  end
 
   # GET /users/1/edit
   def edit
@@ -89,4 +89,4 @@ end
     def user_params
       params.require(:user).permit(:f_name, :l_name, :birthday, :role, :merchant_name, :owner_fname, :owner_lname, :email, :contact_num, :address, :balance, :user_type)
     end
-end
+  end
