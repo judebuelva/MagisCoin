@@ -26,10 +26,15 @@ class UsersController < ApplicationController
       @user.f_name = params[:user][:f_name]
       @user.l_name = params[:user][:l_name]
       @user.birthday = params[:user][:birthday]
+      @user.role = nil
+      @user.merchant_name = nil
+      @user.owner_fname = nil
+      @user.owner_lname = nil
       @user.email = params[:user][:email]
       @user.contact_num = params[:user][:contact_num]
       @user.address = params[:user][:address]
       @user.balance = 0
+      @user.user_type = "C"
       #all fields that should be null (nil) or 0
       @user.save
       redirect_to "/users/#{@user.id}"
