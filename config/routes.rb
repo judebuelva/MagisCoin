@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
     get "users/new/customer", to: "users#new_customer"
     post "users/new/customer", to: "users#create_customer"
+
+    get "users/new/merchant", to: "users#new_merchant"
+    post "users/new/merchant", to: "users#create_merchant"
+
+    get "users/new/admin", to: "users#new_admin"
+    post "users/new/admin", to: "users#create_admin"
   resources :transactions
   resources :users
   resources :cards

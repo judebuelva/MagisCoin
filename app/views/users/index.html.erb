@@ -5,15 +5,15 @@
 <table>
   <thead>
     <tr>
-      <th>F name</th>
-      <th>L name</th>
+      <th>First name</th>
+      <th>Last name</th>
       <th>Birthday</th>
       <th>Role</th>
       <th>Merchant name</th>
-      <th>Owner fname</th>
-      <th>Owner lname</th>
+      <th>Owner first name</th>
+      <th>Owner last name</th>
       <th>Email</th>
-      <th>Contact num</th>
+      <th>Contact number</th>
       <th>Address</th>
       <th>Balance</th>
       <th>User type</th>
@@ -46,6 +46,6 @@
 
 <br>
 <h3>Register an account:</h3>
-<%= link_to 'Admin Account', new_user_path %>
-<%= link_to 'Customer Account', "users/new/customer" %>
-<%= link_to 'Merchant Account', new_user_path %>
+<%= link_to 'Admin Account', 'users/new/admin' %> |
+<%= link_to 'Customer Account', 'users/new/customer' %>   |
+<%= link_to 'Merchant Account', 'users/new/merchant' %>

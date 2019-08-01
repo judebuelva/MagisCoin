@@ -21,6 +21,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_merchant
+    @user = User.new
+  end
+
+  def new_admin
+    @user = User.new
+  end
+
   def create_customer
       @user = User.new
       @user.f_name = params[:user][:f_name]
@@ -36,6 +44,43 @@ class UsersController < ApplicationController
       @user.balance = 0
       @user.user_type = "C"
       #all fields that should be null (nil) or 0
+      @user.save
+      redirect_to "/users/#{@user.id}"
+  end
+
+  def create_merchant
+      @user = User.new
+      @user.f_name = nil
+      @user.l_name = nil
+      @user.birthday = nil
+      @user.role = nil
+      @user.merchant_name = params[:user][:merchant_name]
+      @user.owner_fname = params[:user][:owner_fname]
+      @user.owner_lname = params[:user][:owner_lname]
+      @user.email = params[:user][:email]
+      @user.contact_num = params[:user][:contact_num]
+      @user.address = params[:user][:address]
+      @user.balance = 0
+      @user.user_type = "M"
+      #all fields that should be null (nil) or 0
+      @user.save
+      redirect_to "/users/#{@user.id}"
+  end
+
+  def create_admin
+      @user = User.new
+      @user.f_name = params[:user][:f_name]
+      @user.l_name = params[:user][:l_name]
+      @user.birthday = nil
+      @user.role = params[:user][:role]
+      @user.merchant_name = nil
+      @user.owner_fname = nil
+      @user.owner_lname = nil
+      @user.email = params[:user][:email]
+      @user.contact_num = params[:user][:contact_num]
+      @user.address = params[:user][:address]
+      @user.balance = 0
+      @user.user_type = "A"
       @user.save
       redirect_to "/users/#{@user.id}"
   end

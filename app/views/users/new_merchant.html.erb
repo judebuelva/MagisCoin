@@ -1,6 +1,6 @@
-<h1>Register a Customer</h1>
+<h1>Register a Merchant</h1>
 
-<%= form_for(@user, :url=>{:action => 'create_customer'}) do |form| %>
+<%= form_for(@user, :url=>{:action => 'create_merchant'}) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,18 +14,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "First name"%>
-    <%= form.text_field :f_name %>
+    <%= form.label "Merchant name"%>
+    <%= form.text_field :merchant_name %>
   </div>
 
   <div class="field">
-    <%= form.label "Last name" %>
-    <%= form.text_field :l_name %>
+    <%= form.label "Owner First name" %>
+    <%= form.text_field :owner_fname %>
   </div>
 
   <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
+    <%= form.label "Owner Last name" %>
+    <%= form.text_field :owner_lname %>
   </div>
 
   <div class="field">
@@ -34,7 +34,7 @@
   </div>
 
   <div class="field">
-    <%= form.label "Contact Number" %>
+    <%= form.label "Contact number" %>
     <%= form.number_field :contact_num %>
   </div>
 
@@ -44,7 +44,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Create Account" %>
+    <%= form.submit "Create Account"%>
   </div>
 
   <%= link_to 'Back', users_path %>

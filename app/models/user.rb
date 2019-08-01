@@ -9,6 +9,7 @@ class User < ApplicationRecord
     has_many :card_transactions, foreign_key: "user_id", class_name: "Card"
     has_many :cards, through: :card_transactions, source: :card_id
 
+
     validates :email, format: {with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: "Please enter right format"}#/\A[\w+\-.]+@[a-z\d\-]+)*\.[a-z]+\z/i
   	validates :email,  presence: true, uniqueness: true
   	validates :contact_num, presence: true

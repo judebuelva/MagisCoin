@@ -1,6 +1,6 @@
-<h1>Register a Customer</h1>
+<h1>Register an Admin</h1>
 
-<%= form_for(@user, :url=>{:action => 'create_customer'}) do |form| %>
+<%= form_for(@user, :url=>{:action => 'create_admin'}) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -24,8 +24,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
+    <%= form.label "Role" %>
+    <%= form.text_field :role %>
   </div>
 
   <div class="field">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Create Account" %>
+    <%= form.submit "Create Account"%>
   </div>
 
   <%= link_to 'Back', users_path %>
