@@ -41,11 +41,11 @@ class UsersController < ApplicationController
       @user.email = params[:user][:email]
       @user.contact_num = params[:user][:contact_num]
       @user.address = params[:user][:address]
-      @user.balance = 0
+      @user.balance = 0.0
       @user.user_type = "C"
       #all fields that should be null (nil) or 0
       @user.save
-      redirect_to "/users/#{@user.id}"
+      redirect_to "/users/"
   end
 
   def create_merchant
@@ -60,15 +60,15 @@ class UsersController < ApplicationController
       @user.email = params[:user][:email]
       @user.contact_num = params[:user][:contact_num]
       @user.address = params[:user][:address]
-      @user.balance = 0
+      @user.balance = 0.0
       @user.user_type = "M"
       #all fields that should be null (nil) or 0
       @user.save
-      redirect_to "/users/#{@user.id}"
+      redirect_to "/users/"
   end
 
   def create_admin
-      @user = User.new
+      @user = User.new(user_params)
       @user.f_name = params[:user][:f_name]
       @user.l_name = params[:user][:l_name]
       @user.birthday = nil
@@ -79,10 +79,10 @@ class UsersController < ApplicationController
       @user.email = params[:user][:email]
       @user.contact_num = params[:user][:contact_num]
       @user.address = params[:user][:address]
-      @user.balance = 0
+      @user.balance = 0.0
       @user.user_type = "A"
       @user.save
-      redirect_to "/users/#{@user.id}"
+      redirect_to "/users/"
   end
 
   # GET /users/1/edit
