@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
     get "users/new/admin", to: "users#new_admin"
     post "users/new/admin", to: "users#create_admin"
+
+    get "users/buy_load", to: "users#buy_load"
+    post "users/buy_load", to: "users#buyload"
+
+    get "users/new/purchase", to: "users#purchase"
+    post "users/new/purchase", to: "users#payment"
+
   resources :transactions
   resources :users
   resources :cards

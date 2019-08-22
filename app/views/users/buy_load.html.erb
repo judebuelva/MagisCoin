@@ -1,0 +1,33 @@
+<h1>Load a User</h1>
+
+<%= form_tag('/users/buy_load')%>
+
+
+  <div class="field">
+    <%= label_tag ("User ID to be loaded")%>
+    <%= text_field_tag (:id)%>
+  </div>
+
+
+  <div class="field">
+    <%= label_tag ("Amount to be loaded")%>
+    <%= text_field_tag (:balance)%>
+  </div>
+
+
+  <div class="actions">
+    <%= submit_tag("Load User") %>
+  </div>
+
+  <!-- <div class="field">
+    <label>User ID to be loaded</label>
+    <input id="id" />
+  </div>
+
+  <div class="field">
+    <label>Amount to be loaded</label>
+    <input id="balance" />
+  </div> -->
+
+  <%= link_to 'Back', users_path %>
+  </form>

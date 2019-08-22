@@ -1,5 +1,7 @@
 <h1>Register a Customer</h1>
 
+<%= @user.to_json %>
+
 <%= form_for(@user, :url=>{:action => 'create_customer'}) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -43,8 +45,13 @@
     <%= form.text_field :address %>
   </div>
 
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field(:password) %>
+  </div>
+
   <div class="actions">
-    <%= form.submit "Create Account" %>
+    <%= form.submit "Create Customer" %>
   </div>
 
   <%= link_to 'Back', users_path %>
