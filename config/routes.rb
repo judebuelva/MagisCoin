@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     get "users/buy_load", to: "users#buy_load"
     post "users/buy_load", to: "users#buyload"
 
-    get "users/new/purchase", to: "users#purchase"
-    post "users/new/purchase", to: "users#payment"
+    get "users/payment", to: "users#purchase"
+    post "users/payment", to: "users#payment"
 
   resources :transactions
   resources :users

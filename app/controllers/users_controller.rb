@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def purchase
-    @user = User.new
+    # @user = User.new
     #preferrably just it has its own URL
   end
 
@@ -81,13 +81,13 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "M"
       #all fields that should be null (nil) or 0
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+     @user.save
+      #   format.html { redirect_to @user, notice: 'User was successfully created.' }
+      #   format.json { render :show, status: :created, location: @user }
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @user.errors, status: :unprocessable_entity }
+      # end
       redirect_to users_path #replace for home of user when registered
   end
 
@@ -106,13 +106,13 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "A"
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      @user.save
+      #   format.html { redirect_to @user, notice: 'User was successfully created.' }
+      #   format.json { render :show, status: :created, location: @user }
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @user.errors, status: :unprocessable_entity }
+      # end
       redirect_to users_path
   end
 
@@ -125,7 +125,16 @@ class UsersController < ApplicationController
   end
 
   def payment
+    @user = User.find(params[:id[0]])
+    send_prev = @user.balance
+    @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
+    @user = 0
+
+    @user = User.find(params[:id[1]])
+    recv_prev = @user.balance
+    @user.update( balance: recv_prev.to_f + params[:balance].to_f )
+    puts @user.errors.full_messages
   end
 
   # GET /users/1/edit

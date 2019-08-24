@@ -1,25 +1,25 @@
-<h1>Load a User</h1>
+<h1>Purchasing</h1>
 
-<%= form_for(@user, :url=>{:action => 'payment'}) do |form| %>
+<%= form_tag('/users/payment')%>
 
   <div class="field">
-    <%= form.label "User ID of sender"%>
-    <%= form.text_field :id%>
+    <%= label_tag ("User ID of sender") %>
+    <%= text_field_tag :id[0]%>
   </div>
 
   <div class="field">
-    <%= form.label "Amount to send" %>
-    <%= form.text_field :balance %>
+    <%= label_tag ("Amount to send") %>
+    <%= text_field_tag :balance %>
   </div>
 
   <div class="field">
-    <%= form.label "User ID of receiver"%>
-    <%= form.text_field :id%>
+    <%= label_tag ("User ID of receiver") %>
+    <%= text_field_tag :id[1]%>
   </div>
 
   <div class="actions">
-    <%= form.submit "Send Amount"%>
+    <%= submit_tag ("Send Amount") %>
   </div>
 
   <%= link_to 'Back', users_path %>
-<% end %>
+</form>
