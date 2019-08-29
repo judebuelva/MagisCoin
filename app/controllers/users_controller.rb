@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "C"
-      @user.password = params[:user][:password]
+      @user.password_digest = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
        @user.save
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       @user.l_name = nil
       @user.birthday = nil
       @user.role = nil
-      @user.password = params[:user][:password]
+      @user.password_digest = params[:user][:password_digest]
       @user.merchant_name = params[:user][:merchant_name]
       @user.owner_fname = params[:user][:owner_fname]
       @user.owner_lname = params[:user][:owner_lname]
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       @user.l_name = params[:user][:l_name]
       @user.birthday = nil
       @user.role = params[:user][:role]
-      @user.password = params[:user][:password]
+      @user.password_digest = params[:user][:password]
       @user.merchant_name = nil
       @user.owner_fname = nil
       @user.owner_lname = nil
@@ -122,6 +122,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     prev_balance = @user.balance
     @user.update( balance: prev_balance.to_f + params[:balance].to_f )
+
+    @transaction = Transaction.new()
+    # @transaction.send_id = params[:id[0]]
+    @transaction.recv_id = params[:id]
+    @transaction.card_id = nil
+    @transaction.purchase_type = "Buy Load"
+    @transaction.amount = params[:balance].to_f
+    @transaction.time_recorded = DateTime.now
+    @transaction.save
   end
 
   def payment
@@ -135,6 +144,16 @@ class UsersController < ApplicationController
     recv_prev = @user.balance
     @user.update( balance: recv_prev.to_f + params[:balance].to_f )
     puts @user.errors.full_messages
+
+    @transaction = Transaction.new()
+    @transaction.send_id = params[:id[0]]
+    @transaction.recv_id = params[:id[1]]
+    @transaction.card_id = nil
+    @transaction.purchase_type = "Send Load"
+    @transaction.amount = params[:balance].to_f
+    @transaction.time_recorded = DateTime.now
+    @transaction.save
+
   end
 
   # GET /users/1/edit
@@ -189,6 +208,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:f_name, :l_name, :birthday, :role, :merchant_name, :owner_fname, :owner_lname, :email, :contact_num, :address, :balance, :user_type, :password)
+      params.require(:user).permit(:f_name, :l_name, :birthday, :role, :merchant_name, :owner_fname, :owner_lname, :email, :contact_num, :address, :balance, :user_type, :password_digest)
     end
   end

@@ -23109,3 +23109,1123 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 37ms (Views: 35.7ms | ActiveRecord: 0.2ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDataTypeForPassword (20190825173119)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "users"[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" digest DEFAULT NULL)[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "ausers"[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190825173119_change_data_type_for_password.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190825173119"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (127.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/users" for ::1 at 2019-08-26 01:37:10 +0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 276ms (Views: 241.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/3/edit" for ::1 at 2019-08-26 01:37:16 +0800
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:187
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (9.9ms)
+  Rendered users/edit.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 71ms (Views: 34.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 01:37:19 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 51ms (Views: 49.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new/customer" for ::1 at 2019-08-26 01:37:24 +0800
+Processing by UsersController#new_customer as HTML
+  Rendering users/new_customer.html.erb within layouts/application
+  Rendered users/new_customer.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/new/customer" for ::1 at 2019-08-26 01:38:00 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CJXOhNK6P5swx9h+6waZgqiYKWU2LzDB/hDlxFDkLYNrib6gl1bDGSY2WoFMGkdx/DyJm8OVWVxUMblbP3rmgQ==", "user"=>{"f_name"=>"Justin", "l_name"=>"Lee", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"lee.justinn@gmail.com", "contact_num"=>"09879549549", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lee.justinn@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("f_name", "l_name", "email", "contact_num", "address", "balance", "user_type", "created_at", "updated_at", "password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Justin"], ["l_name", "Lee"], ["email", "lee.justinn@gmail.com"], ["contact_num", 9879549549], ["address", "어디가"], ["balance", 0.0], ["user_type", "C"], ["created_at", "2019-08-25 17:38:00.262111"], ["updated_at", "2019-08-25 17:38:00.262111"], ["password", "123123"]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (162.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Redirected to http://localhost:3000/users
+Completed 302 Found in 172ms (ActiveRecord: 163.4ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 01:38:00 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/buy_load" for ::1 at 2019-08-26 01:38:05 +0800
+Processing by UsersController#buy_load as HTML
+  Rendering users/buy_load.html.erb within layouts/application
+  Rendered users/buy_load.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/buy_load" for ::1 at 2019-08-26 01:38:39 +0800
+Processing by UsersController#buyload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HWEkm9sAwukb50vrpgK1FTby1GX9NEx1HhMtYrIr3d4U1LeQbja2ZFuScmS8MbJwevgyBDN2A79qZWpF2zi2lg==", "id"=>"21", "balance"=>"2100", "commit"=>"Load User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:122
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:124
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "lee.justinn@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 2100.0], ["updated_at", "2019-08-25 17:38:39.400752"], ["id", 21]]
+  ↳ app/controllers/users_controller.rb:124
+  [1m[35m (190.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:124
+No template found for UsersController#buyload, rendering head :no_content
+Completed 204 No Content in 219ms (ActiveRecord: 190.8ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDataTypeForPassword (20190825175817)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password"  DEFAULT NULL)[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "users"[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "ausers"[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190825175817_change_data_type_for_password.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190825175817"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (98.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDataTypeForPassword (20190825180505)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "users"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "ausers"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "ausers" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password" FROM "users"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest" FROM "ausers"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190825180505_change_data_type_for_password.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190825180505"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (100.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/users" for ::1 at 2019-08-26 02:06:41 +0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 236ms (Views: 223.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 02:06:42 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 35ms (Views: 33.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 02:06:43 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new/customer" for ::1 at 2019-08-26 02:06:46 +0800
+Processing by UsersController#new_customer as HTML
+  Rendering users/new_customer.html.erb within layouts/application
+  Rendered users/new_customer.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 45ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/new/customer" for ::1 at 2019-08-26 02:07:11 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `password=' for #<User:0x00007fa8702f3f08>
+Did you mean?  password_digest=):
+  
+app/controllers/users_controller.rb:57:in `create_customer'
+Started GET "/users" for ::1 at 2019-08-26 11:29:47 +0800
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/application_record.rb:3:in `<class:ApplicationRecord>'
+app/models/application_record.rb:1:in `<main>'
+app/models/user.rb:1:in `<main>'
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users" for ::1 at 2019-08-26 11:36:57 +0800
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users" for ::1 at 2019-08-26 11:37:15 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (22.1ms)
+Completed 200 OK in 64ms (Views: 53.7ms | ActiveRecord: 1.0ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeUniquenessForContactnum (20190826070542)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest" FROM "users"[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "f_name" varchar DEFAULT NULL, "l_name" varchar DEFAULT NULL, "birthday" date DEFAULT NULL, "role" varchar DEFAULT NULL, "merchant_name" varchar DEFAULT NULL, "owner_fname" varchar DEFAULT NULL, "owner_lname" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "contact_num" integer DEFAULT NULL, "address" varchar DEFAULT NULL, "balance" float DEFAULT NULL, "user_type" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest")
+                     SELECT "id","f_name","l_name","birthday","role","merchant_name","owner_fname","owner_lname","email","contact_num","address","balance","user_type","created_at","updated_at","password_digest" FROM "ausers"[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190826070542_change_uniqueness_for_contactnum.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190826070542"]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (239.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:25:21 +0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x0000561b7396e0a8>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:32:02 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0b7ce40>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:46:46 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0e0a0b8>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/__web_console/repl_sessions/a27c8476008c623e714148c3ac23e7dd/trace" for ::1 at 2019-08-26 15:47:11 +0800
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:47:43 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0a72978>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:47:44 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o1fSsYQ/8uNExf54DjB9yFdiTvR7eIJqgaRMFKRbhN7AS6KVwdMOYVI0fIepLKM7A8buCo7C6/crhRCLy8VP3A==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0dfe3a8>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:53:36 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GG0FlL/zLTX9etmRyelg2RPNMkZJEIzdtRxeDht4jEwaXeBqb4Fxg6jCGuEGKIdVnnRX5rI5m6Lbd58ZE86PjQ==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x0000561b74517698>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:55:33 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GG0FlL/zLTX9etmRyelg2RPNMkZJEIzdtRxeDht4jEwaXeBqb4Fxg6jCGuEGKIdVnnRX5rI5m6Lbd58ZE86PjQ==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0b1f128>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started POST "/users/new/customer" for ::1 at 2019-08-26 15:55:40 +0800
+Processing by UsersController#create_customer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GG0FlL/zLTX9etmRyelg2RPNMkZJEIzdtRxeDht4jEwaXeBqb4Fxg6jCGuEGKIdVnnRX5rI5m6Lbd58ZE86PjQ==", "user"=>{"f_name"=>"Justin", "l_name"=>"Buelva", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"25", "email"=>"jusBuelva", "contact_num"=>"13213123121", "address"=>"어디가", "password"=>"[FILTERED]"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jusBuelva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:59
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc0def128>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:59:in `create_customer'
+Started GET "/users" for ::1 at 2019-08-26 15:57:03 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 287ms (Views: 285.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new/admin" for ::1 at 2019-08-26 15:57:06 +0800
+Processing by UsersController#new_admin as HTML
+  Rendering users/new_admin.html.erb within layouts/application
+  Rendered users/new_admin.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new/admin" for ::1 at 2019-08-26 15:57:22 +0800
+Processing by UsersController#new_admin as HTML
+  Rendering users/new_admin.html.erb within layouts/application
+  Rendered users/new_admin.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 36ms (Views: 35.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/new/admin" for ::1 at 2019-08-26 15:58:00 +0800
+Processing by UsersController#create_admin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qKRMjWcwsvGYvrl4Z1O0Le0pqnBA298N8EOwtyNnUtZme+4Czi7NP7+02GlbLTkdkxpuoux/GHkCW8CzttrFgQ==", "user"=>{"f_name"=>"John", "l_name"=>"Lin", "role"=>"Programmer", "email"=>"lin.john@gmail.com", "contact_num"=>"12012010120", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Admin"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lin.john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc94c1e08>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:109:in `create_admin'
+Started POST "/users/new/admin" for ::1 at 2019-08-26 16:11:23 +0800
+Processing by UsersController#create_admin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qKRMjWcwsvGYvrl4Z1O0Le0pqnBA298N8EOwtyNnUtZme+4Czi7NP7+02GlbLTkdkxpuoux/GHkCW8CzttrFgQ==", "user"=>{"f_name"=>"John", "l_name"=>"Lin", "role"=>"Programmer", "email"=>"lin.john@gmail.com", "contact_num"=>"12012010120", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Admin"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/application_record.rb:3:in `<class:ApplicationRecord>'
+app/models/application_record.rb:1:in `<main>'
+app/models/user.rb:1:in `<main>'
+app/controllers/users_controller.rb:95:in `create_admin'
+Started POST "/__web_console/repl_sessions/1528c79cef824369fed599e86df7a938/trace" for ::1 at 2019-08-26 16:11:28 +0800
+Started POST "/__web_console/repl_sessions/1528c79cef824369fed599e86df7a938/trace" for ::1 at 2019-08-26 16:11:29 +0800
+Started POST "/__web_console/repl_sessions/1528c79cef824369fed599e86df7a938/trace" for ::1 at 2019-08-26 16:11:30 +0800
+Started POST "/__web_console/repl_sessions/1528c79cef824369fed599e86df7a938/trace" for ::1 at 2019-08-26 16:11:33 +0800
+Started POST "/users/new/admin" for ::1 at 2019-08-26 17:50:18 +0800
+Processing by UsersController#create_admin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qKRMjWcwsvGYvrl4Z1O0Le0pqnBA298N8EOwtyNnUtZme+4Czi7NP7+02GlbLTkdkxpuoux/GHkCW8CzttrFgQ==", "user"=>{"f_name"=>"John", "l_name"=>"Lin", "role"=>"Programmer", "email"=>"lin.john@gmail.com", "contact_num"=>"12012010120", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Admin"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lin.john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `password' for #<User:0x00007f8fc933aaf8>
+Did you mean?  password_digest):
+  
+app/controllers/users_controller.rb:109:in `create_admin'
+Started POST "/users/new/admin" for ::1 at 2019-08-26 17:59:58 +0800
+Processing by UsersController#create_admin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qKRMjWcwsvGYvrl4Z1O0Le0pqnBA298N8EOwtyNnUtZme+4Czi7NP7+02GlbLTkdkxpuoux/GHkCW8CzttrFgQ==", "user"=>{"f_name"=>"John", "l_name"=>"Lin", "role"=>"Programmer", "email"=>"lin.john@gmail.com", "contact_num"=>"12012010120", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Admin"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lin.john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+Redirected to http://localhost:3000/users
+Completed 302 Found in 30ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 17:59:58 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 35ms (Views: 33.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new/merchant" for ::1 at 2019-08-26 18:00:11 +0800
+Processing by UsersController#new_merchant as HTML
+  Rendering users/new_merchant.html.erb within layouts/application
+  Rendered users/new_merchant.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/new/merchant" for ::1 at 2019-08-26 18:00:46 +0800
+Processing by UsersController#create_merchant as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4lUptGn3lAJz7oUShP1owVQPTESDGqmc3/Ht0UktaSXuLd1/2dBCZ+e47zjbsUcV0qzuV4Dm0sN+KJ35bNtmOw==", "user"=>{"merchant_name"=>"POGO", "owner_fname"=>"Jerren", "owner_lname"=>"Sia", "email"=>"jsia@gmail.com", "contact_num"=>"0102930123", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Merchant"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:84
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jsia@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:84
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("merchant_name", "owner_fname", "owner_lname", "email", "contact_num", "address", "balance", "user_type", "created_at", "updated_at", "password_digest") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["merchant_name", "POGO"], ["owner_fname", "Jerren"], ["owner_lname", "Sia"], ["email", "jsia@gmail.com"], ["contact_num", 102930123], ["address", "Where do i live"], ["balance", 0.0], ["user_type", "M"], ["created_at", "2019-08-26 10:00:46.239080"], ["updated_at", "2019-08-26 10:00:46.239080"], ["password_digest", 123123]]
+  ↳ app/controllers/users_controller.rb:84
+  [1m[35m (166.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:84
+Redirected to http://localhost:3000/users
+Completed 302 Found in 178ms (ActiveRecord: 166.7ms)
+
+
+Started GET "/users" for ::1 at 2019-08-26 18:00:46 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 60ms (Views: 58.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-27 16:59:12 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 36ms (Views: 30.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-08-27 17:20:13 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (10.6ms)
+  Rendered transactions/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 45ms (Views: 35.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-27 17:20:35 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-08-27 17:20:37 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (7.1ms)
+  Rendered transactions/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 58ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-27 17:20:41 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-08-27 22:20:10 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (10.2ms)
+  Rendered transactions/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 45ms (Views: 43.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-27 22:20:12 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 37ms (Views: 35.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/transactions/new" for ::1 at 2019-08-27 22:56:36 +0800
+Processing by TransactionsController#new as HTML
+  Rendering transactions/new.html.erb within layouts/application
+  Rendered transactions/_form.html.erb (4.2ms)
+  Rendered transactions/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 38ms (Views: 28.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/buy_load" for ::1 at 2019-08-28 13:36:36 +0800
+Processing by UsersController#buy_load as HTML
+  Rendering users/buy_load.html.erb within layouts/application
+  Rendered users/buy_load.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/payment" for ::1 at 2019-08-28 13:36:41 +0800
+Processing by UsersController#purchase as HTML
+  Rendering users/purchase.html.erb within layouts/application
+  Rendered users/purchase.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 28ms (Views: 26.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/payment" for ::1 at 2019-08-28 13:37:10 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t478N+P9VhZF3B7xn4m6aFiBMdfBILxvnYZng552Qq3zMoaE7apIuTqeyHeu7jK7UULvEcm4J/n8GM0B6clHWw==", "i"=>"3", "balance"=>"1000", "d"=>"4", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 20000.0], ["updated_at", "2019-08-28 05:37:10.895340"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (177.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbu@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 3234.0], ["updated_at", "2019-08-28 05:37:11.079127"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (105.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+Completed 500 Internal Server Error in 495ms (ActiveRecord: 285.1ms)
+
+
+  
+NameError (undefined local variable or method `transaction_params' for #<UsersController:0x00007f8fc9bb95a8>
+Did you mean?  transaction_path
+               transaction_url
+               transactions_path):
+  
+app/controllers/users_controller.rb:139:in `payment'
+Started POST "/users/payment" for ::1 at 2019-08-28 13:38:50 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t478N+P9VhZF3B7xn4m6aFiBMdfBILxvnYZng552Qq3zMoaE7apIuTqeyHeu7jK7UULvEcm4J/n8GM0B6clHWw==", "i"=>"3", "balance"=>"1000", "d"=>"4", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 19000.0], ["updated_at", "2019-08-28 05:38:50.895114"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (112.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbu@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 4234.0], ["updated_at", "2019-08-28 05:38:51.015320"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (89.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+No template found for UsersController#payment, rendering head :no_content
+Completed 204 No Content in 272ms (ActiveRecord: 204.9ms)
+
+
+Started GET "/users/payment" for ::1 at 2019-08-28 13:38:55 +0800
+Processing by UsersController#purchase as HTML
+  Rendering users/purchase.html.erb within layouts/application
+  Rendered users/purchase.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2019-08-28 13:53:53 +0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 322ms (Views: 305.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/payment" for ::1 at 2019-08-28 13:54:04 +0800
+Processing by UsersController#purchase as HTML
+  Rendering users/purchase.html.erb within layouts/application
+  Rendered users/purchase.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/payment" for ::1 at 2019-08-28 13:54:12 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2ELxbzdxNdDRf3ohOsRO/Odkrw56z8QFhjsGZvmh6dKc/ovcOSYrf649rKcLo8Yv7qdxyHJXX5Pnpazkjh7sJA==", "i"=>"3", "balance"=>"1000", "d"=>"5", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 18000.0], ["updated_at", "2019-08-28 05:54:12.736532"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (204.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "sia.ks@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 5000.0], ["updated_at", "2019-08-28 05:54:12.951295"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (106.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+Completed 500 Internal Server Error in 495ms (ActiveRecord: 313.9ms)
+
+
+  
+NameError (undefined local variable or method `transaction_params' for #<UsersController:0x00007f7afc0517b0>
+Did you mean?  transaction_path
+               transaction_url
+               transactions_path):
+  
+app/controllers/users_controller.rb:139:in `payment'
+Started POST "/users/payment" for ::1 at 2019-08-28 13:54:58 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kiwcYBORAw03Gkeokv5bDFgnAyQ85oHke4SmVdg3YqaQHPmew+Nfu2KihNhdP7yA1Z5mhMfPlpsV72dC0IFhZw==", "i"=>"3", "balance"=>"1000", "d"=>"5", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 17000.0], ["updated_at", "2019-08-28 05:54:58.086547"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (124.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "sia.ks@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 6000.0], ["updated_at", "2019-08-28 05:54:58.222243"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (112.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+Completed 400 Bad Request in 288ms (ActiveRecord: 238.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:201:in `user_params'
+app/controllers/users_controller.rb:139:in `payment'
+Started POST "/users/payment" for ::1 at 2019-08-28 13:57:18 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kiwcYBORAw03Gkeokv5bDFgnAyQ85oHke4SmVdg3YqaQHPmew+Nfu2KihNhdP7yA1Z5mhMfPlpsV72dC0IFhZw==", "i"=>"3", "balance"=>"1000", "d"=>"5", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 16000.0], ["updated_at", "2019-08-28 05:57:18.574578"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (110.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "sia.ks@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 7000.0], ["updated_at", "2019-08-28 05:57:18.696781"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (111.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+Completed 500 Internal Server Error in 291ms (ActiveRecord: 226.8ms)
+
+
+  
+NoMethodError (undefined method `now' for Date:Class
+Did you mean?  new):
+  
+app/controllers/users_controller.rb:145:in `payment'
+Started POST "/users/payment" for ::1 at 2019-08-28 13:57:59 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kiwcYBORAw03Gkeokv5bDFgnAyQ85oHke4SmVdg3YqaQHPmew+Nfu2KihNhdP7yA1Z5mhMfPlpsV72dC0IFhZw==", "i"=>"3", "balance"=>"1000", "d"=>"5", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 15000.0], ["updated_at", "2019-08-28 05:57:59.750310"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (137.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "sia.ks@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 8000.0], ["updated_at", "2019-08-28 05:57:59.898083"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (110.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mTransaction Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "transactions" WHERE "transactions"."send_id" = ? LIMIT ?[0m  [["send_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mTransaction Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "transactions" WHERE "transactions"."recv_id" = ? LIMIT ?[0m  [["recv_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("send_id", "recv_id", "purchase_type", "amount", "time_recorded", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["send_id", 3], ["recv_id", 5], ["purchase_type", "Send Load"], ["amount", 1000.0], ["time_recorded", "2019-08-28 05:58:00.030477"], ["created_at", "2019-08-28 05:58:00.062462"], ["updated_at", "2019-08-28 05:58:00.062462"]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[35m (112.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:146
+No template found for UsersController#payment, rendering head :no_content
+Completed 204 No Content in 477ms (ActiveRecord: 366.0ms)
+
+
+Started GET "/users/payment" for ::1 at 2019-08-28 13:58:02 +0800
+Processing by UsersController#purchase as HTML
+  Rendering users/purchase.html.erb within layouts/application
+  Rendered users/purchase.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 39ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/payment" for ::1 at 2019-08-28 13:58:03 +0800
+Processing by UsersController#payment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OhYvihPZrwM+OWEL8W3Oj3IxT6I+Y8GPn4q4DbpT7js4Jsp0w6vztWuBons+rCkD/4gqAsVK1vDx4XkasuXt+g==", "i"=>"3", "balance"=>"1000", "d"=>"5", "commit"=>"Send Amount"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "jbueva@gbox.adnu.edu.ph"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 14000.0], ["updated_at", "2019-08-28 05:58:03.761175"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:130
+  [1m[35m (119.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:130
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:134
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "sia.ks@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "balance" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["balance", 9000.0], ["updated_at", "2019-08-28 05:58:03.890693"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (99.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:136
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mTransaction Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "transactions" WHERE "transactions"."send_id" = ? LIMIT ?[0m  [["send_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[36mTransaction Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "transactions" WHERE "transactions"."recv_id" = ? LIMIT ?[0m  [["recv_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:146
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:146
+No template found for UsersController#payment, rendering head :no_content
+Completed 204 No Content in 268ms (ActiveRecord: 223.2ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-28 13:58:14 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 44ms (Views: 41.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/payment" for ::1 at 2019-08-28 18:12:53 +0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/justin/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#purchase as HTML
+  Rendering users/purchase.html.erb within layouts/application
+  Rendered users/purchase.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 255ms (Views: 250.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2019-08-28 18:12:55 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 60ms (Views: 47.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/new/merchant" for ::1 at 2019-08-28 18:13:01 +0800
+Processing by UsersController#new_merchant as HTML
+  Rendering users/new_merchant.html.erb within layouts/application
+  Rendered users/new_merchant.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 44ms (Views: 42.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/new/merchant" for ::1 at 2019-08-28 18:13:41 +0800
+Processing by UsersController#create_merchant as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p7Y3UR3YIFQnR0hWfYDh4Y6/Qwq2dIf9HvhMZjZG2J+rzsOarf/2MbMRInwizM41CBzhGbWI/KK/ITxOE7DXgQ==", "user"=>{"merchant_name"=>"Ateneo Innovation", "owner_fname"=>"John", "owner_lname"=>"Santos", "email"=>"AI@gbox.adnu.edu.ph", "contact_num"=>"010203939191", "address"=>"Atene", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Merchant"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:84
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "AI@gbox.adnu.edu.ph"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:84
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:84
+Redirected to http://localhost:3000/users
+Completed 302 Found in 9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2019-08-28 18:13:41 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new/merchant" for ::1 at 2019-08-28 18:13:47 +0800
+Processing by UsersController#new_merchant as HTML
+  Rendering users/new_merchant.html.erb within layouts/application
+  Rendered users/new_merchant.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 65ms (Views: 63.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2019-08-28 18:13:51 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new/admin" for ::1 at 2019-08-28 18:16:41 +0800
+Processing by UsersController#new_admin as HTML
+  Rendering users/new_admin.html.erb within layouts/application
+  Rendered users/new_admin.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 49ms (Views: 28.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/new/admin" for ::1 at 2019-08-28 18:17:27 +0800
+Processing by UsersController#create_admin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DQunncqq2RJ0q71jOOhCrlSZQfy1MsggrT56W4cNafLD1AUSY7Sm3FOh3HIEls+eKqqFLhmWD1RfJgpfErD+pQ==", "user"=>{"f_name"=>"John Louie", "l_name"=>"Dela Cruz", "role"=>"Mother", "email"=>"johdelacruz@gmail.com", "contact_num"=>"01010201203", "address"=>"Where do i live", "password_digest"=>"[FILTERED]"}, "commit"=>"Create Admin"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "johdelacruz@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:109
+Redirected to http://localhost:3000/users
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-08-28 18:17:27 +0800
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:22
+  Rendered users/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 54ms (Views: 51.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for ::1 at 2019-08-28 18:18:05 +0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (20.7ms)
+  Rendered users/new.html.erb within layouts/application (22.3ms)
+Completed 200 OK in 54ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-08-28 18:18:09 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QdKZ/tTyG9q2/k9jOVmRbvBv0bUOefVAk+AKmhgV99ND4nwABIBHbONGjBP2mHbifda0FfVQ4j/9i8uNEKP0Eg==", "user"=>{"f_name"=>"", "l_name"=>"", "birthday(1i)"=>"2019", "birthday(2i)"=>"8", "birthday(3i)"=>"28", "role"=>"", "merchant_name"=>"", "owner_fname"=>"", "owner_lname"=>"", "email"=>"", "contact_num"=>"", "address"=>"", "balance"=>"", "user_type"=>"A", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+Unpermitted parameter: :password
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:169
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:169
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:169
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (10.7ms)
+  Rendered users/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 50ms (Views: 41.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/transactions" for ::1 at 2019-08-28 18:28:25 +0800
+Processing by TransactionsController#index as HTML
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/views/transactions/index.html.erb:19
+  Rendered transactions/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 45ms (Views: 39.1ms | ActiveRecord: 1.4ms)
+
+

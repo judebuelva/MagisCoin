@@ -44,8 +44,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.label "Password" %>
+    <%= form.password_field(:password_digest) %>
   </div>
 
   <div class="actions">

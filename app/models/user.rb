@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     has_one :qr
     has_many :send_transactions, foreign_key: "send_id", class_name: "Transaction"
     has_many :sends, through: :send_transactions, source: :user_1
@@ -16,5 +17,5 @@ class User < ApplicationRecord
   	validates :address, presence: true
   	validates :balance, presence: true, numericality: {greater_than_or_equal_to: 0}
   	validates :user_type, presence: true
-    validates :password, presence: true, length: {minimum: 6, maximum: 6}
+    validates :password_digest, presence: true, length: {minimum: 6, maximum: 6}
 end
