@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       @user.l_name = params[:user][:l_name]
       @user.birthday = nil
       @user.role = params[:user][:role]
-      @user.password_digest = params[:user][:password]
+      @user.password_digest = params[:user][:password_digest]
       @user.merchant_name = nil
       @user.owner_fname = nil
       @user.owner_lname = nil
