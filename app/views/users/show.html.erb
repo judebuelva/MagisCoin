@@ -1,64 +1,93 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
 
-<p>
-  <strong>F name:</strong>
-  <%= @user.f_name %>
-</p>
+<head>
 
-<p>
-  <strong>L name:</strong>
-  <%= @user.l_name %>
-</p>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.birthday %>
-</p>
+  <title>MagisCoin - Admin</title>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <!-- Custom fonts for this theme -->
+  <link href="../../stylesheets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-<p>
-  <strong>Merchant name:</strong>
-  <%= @user.merchant_name %>
-</p>
+  <!-- Theme CSS -->
+  <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
 
-<p>
-  <strong>Owner fname:</strong>
-  <%= @user.owner_fname %>
-</p>
+<body id="page-top">
 
-<p>
-  <strong>Owner lname:</strong>
-  <%= @user.owner_lname %>
-</p>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Profile Information</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to 'Admin','users/new/admin', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to 'Customer', 'users/new/customer', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to 'Merchant', 'users/new/merchant', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<p>
-  <strong>Contact num:</strong>
-  <%= @user.contact_num %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Balance:</strong>
-  <%= @user.balance %>
-</p>
-
-<p>
-  <strong>User type:</strong>
-  <%= @user.user_type %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <p class="text center" id="notice"><%= notice %></p>
+                    <h2><% if @user.try(:user_type) == "C" %>
+                        <%= @user.f_name %> <%= @user.l_name %>
+                        <% elsif @user.try(:user_type) == "A" %>
+                        <%= @user.f_name %> <%= @user.l_name %>
+                        <% else @user.try(:user_type) == "M"%>
+                        <%= @user.owner_fname %> <%= @user.owner_lname %>
+                        <% end %>
+                    </h2>
+                    <p><strong>User Type:</strong>
+                        <% if @user.try(:user_type) == "C" %>
+                        CUSTOMER
+                        <% elsif @user.try(:user_type) == "A" %>
+                        ADMIN
+                        <p><strong>Role:</strong> <%= @user.role %></p>
+                        <% else @user.try(:user_type) == "M"%>
+                        MERCHANT
+                        <p><strong>Merchant Name:</strong> <%= @user.merchant_name %></p>
+                        <% end %>
+                    </p>
+                    <p><strong>Birthday: </strong> <%= @user.birthday %></p>
+                    <p><strong>Email: </strong> <%= @user.email %> </p>
+                    <p><strong>Contact No. </strong> <%= @user.contact_num %> </p>
+                    <p><strong>Address: </strong> <%= @user.address %></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis text-center divider">
+                    <h2><strong><%= number_to_currency(@user.balance, unit: "PHP", precision: 2) %></strong></h2>
+                    <p><small>Balance</small></p>
+                    <%= link_to 'Edit Profile', edit_user_path(@user), :class => "btn btn-secondary btn-block fa fa-edit", :style => "color:white;" %>
+                </div>
+    	 </div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

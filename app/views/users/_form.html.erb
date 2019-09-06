@@ -10,72 +10,55 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <p class="text center" id="notice"><%= notice %></p>
+                    <p> <% if @user.try(:user_type) == "C" %>
+                        <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
+                        <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
+                        <% elsif @user.try(:user_type) == "A" %>
+                        <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
+                        <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
+                        <p><strong>Role:</strong> <%= form.text_field :role %></p>
 
-  <div class="field">
-    <%= form.label :f_name %>
-    <%= form.text_field :f_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :l_name %>
-    <%= form.text_field :l_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
-  </div>
-
-  <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role %>
-  </div>
-
-  <div class="field">
-    <%= form.label :merchant_name %>
-    <%= form.text_field :merchant_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner_fname %>
-    <%= form.text_field :owner_fname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner_lname %>
-    <%= form.text_field :owner_lname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact_num %>
-    <%= form.number_field :contact_num %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_type %>
-    <select name="user[user_type]" id="user_user_type">
-        <option value="A">Admin</option>
-        <option value="C">Customer</option>
-        <option value="M">Merchant</option>
-    </select>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+                        <% else @user.try(:user_type) == "M"%>
+                        <p><strong>Merchant Name:</strong> <%= form.text_field :merchant_name %></p>
+                        <p><strong>Owner First Name:</strong> <%= form.text_field :owner_fname %></p>
+                        <p><strong>Owner Last Name:</strong> <%= form.text_field :owner_lname %></p>
+                        <% end %>
+                    </p>
+                    <p><strong>Current User Type:</strong>
+                        <% if @user.try(:user_type) == "C" %>
+                        CUSTOMER
+                        <% elsif @user.try(:user_type) == "A" %>
+                        ADMIN
+                        <strong> - </strong> <%= @user.role %>
+                        <% else @user.try(:user_type) == "M"%>
+                        MERCHANT
+                        <% end %>
+                    </p>
+                    <p><strong>User Type:</strong> <select name="user[user_type]" id="user_user_type">
+                        <option value="A">Admin</option>
+                        <option value="C">Customer</option>
+                        <option value="M">Merchant</option>
+                    </select></p>
+                    <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
+                    <p><strong>Email: </strong> <%= form.text_field :email %> </p>
+                    <p><strong>Contact No. </strong> <%= form.number_field :contact_num %> </p>
+                    <p><strong>Address: <%= form.text_field :address %></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis text-center divider">
+                    <h2><strong>PHP <%= form.text_field :balance, :size=>"5px"  %></strong></h2>
+                    <p><small>Balance</small></p>
+                    <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
+                    <%= link_to ' Show', @user, :class => "btn btn-primary btn-block fa fa-eye", :style => "color:white;" %>
+                    <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
+                </div>
+    	 </div>
+		</div>
+	</div>
+</div>
 <% end %>
