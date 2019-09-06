@@ -14,6 +14,7 @@
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
             <div class="col-sm-12">
+                <h2>Edit Profile Information</h2>
                 <div class="col-xs-12 col-sm-8">
                     <p class="text center" id="notice"><%= notice %></p>
                     <p> <% if @user.try(:user_type) == "C" %>
@@ -23,7 +24,6 @@
                         <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
                         <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
                         <p><strong>Role:</strong> <%= form.text_field :role %></p>
-
                         <% else @user.try(:user_type) == "M"%>
                         <p><strong>Merchant Name:</strong> <%= form.text_field :merchant_name %></p>
                         <p><strong>Owner First Name:</strong> <%= form.text_field :owner_fname %></p>
@@ -57,8 +57,8 @@
                     <%= link_to ' Show', @user, :class => "btn btn-primary btn-block fa fa-eye", :style => "color:white;" %>
                     <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
                 </div>
+                <%end%>
     	 </div>
 		</div>
 	</div>
 </div>
-<% end %>

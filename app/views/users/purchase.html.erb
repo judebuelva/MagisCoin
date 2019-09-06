@@ -1,0 +1,25 @@
+<h1>Purchasing</h1>
+
+<%= form_tag('/users/payment')%>
+
+  <div class="field">
+    <%= label_tag ("User ID of sender") %>
+    <%= text_field_tag :id[0]%>
+  </div>
+
+  <div class="field">
+    <%= label_tag ("Amount to send") %>
+    <%= text_field_tag :balance %>
+  </div>
+
+  <div class="field">
+    <%= label_tag ("User ID of receiver") %>
+    <%= text_field_tag :id[1]%>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag ("Send Amount") %>
+  </div>
+
+  <%= link_to 'Back', users_path %>
+</form>
