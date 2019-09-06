@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_070542) do
+ActiveRecord::Schema.define(version: 2019_09_06_021100) do
 
   create_table "buy_loads", force: :cascade do |t|
     t.integer "send_id"

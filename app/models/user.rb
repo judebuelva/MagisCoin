@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
+    #attr_accessor :password_digest
+
     has_one :qr
     has_many :send_transactions, foreign_key: "send_id", class_name: "Transaction"
     has_many :sends, through: :send_transactions, source: :user_1

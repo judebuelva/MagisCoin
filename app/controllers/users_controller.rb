@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
   # GET /users
   # GET /users.json
   def index
@@ -97,7 +96,7 @@ class UsersController < ApplicationController
       @user.l_name = params[:user][:l_name]
       @user.birthday = nil
       @user.role = params[:user][:role]
-      @user.password_digest = params[:user][:password]
+      @user.password_digest = params[:user][:password_digest]
       @user.merchant_name = nil
       @user.owner_fname = nil
       @user.owner_lname = nil
@@ -124,13 +123,14 @@ class UsersController < ApplicationController
     @user.update( balance: prev_balance.to_f + params[:balance].to_f )
 
     @transaction = Transaction.new()
-    # @transaction.send_id = params[:id[0]]
+    @transaction.send_id = '100'#params[:id[0]]
     @transaction.recv_id = params[:id]
     @transaction.card_id = nil
     @transaction.purchase_type = "Buy Load"
     @transaction.amount = params[:balance].to_f
     @transaction.time_recorded = DateTime.now
     @transaction.save
+    puts @transaction.errors.full_messages
   end
 
   def payment
