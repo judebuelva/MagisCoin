@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "C"
-      @user.password_digest = params[:user][:password_digest]
+      @user.password = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
        @user.save
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       @user.l_name = nil
       @user.birthday = nil
       @user.role = nil
-      @user.password_digest = params[:user][:password_digest]
+      @user.password = params[:user][:password_digest]
       @user.merchant_name = params[:user][:merchant_name]
       @user.owner_fname = params[:user][:owner_fname]
       @user.owner_lname = params[:user][:owner_lname]
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       @user.l_name = params[:user][:l_name]
       @user.birthday = nil
       @user.role = params[:user][:role]
-      @user.password_digest = params[:user][:password_digest]
+      @user.password = params[:user][:password_digest]
       @user.merchant_name = nil
       @user.owner_fname = nil
       @user.owner_lname = nil

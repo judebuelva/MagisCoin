@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     get "users/payment", to: "users#purchase"
     post "users/payment", to: "users#payment"
 
+    get '/login' => 'session#new'
+    post '/login' => 'session#create'
+    get 'logout' => 'session#destroy'
+    get "sign_up" => "users#new", :as => "sign_up"
+
   resources :transactions
   resources :users
   resources :cards
@@ -22,5 +27,6 @@ Rails.application.routes.draw do
   resources :receive_loads
   resources :purchases
   resources :buy_loads
+  resources :session
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
