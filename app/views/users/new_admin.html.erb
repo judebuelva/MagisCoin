@@ -31,20 +31,17 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-            </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Admin','users/new/admin', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Customer', 'users/new/customer', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Merchant', 'users/new/merchant', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-        </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Users', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+          </ul>
       </div>
     </div>
   </nav>
@@ -73,17 +70,14 @@
                     <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
                     <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
                     <p><strong>Role:</strong> <%= form.text_field :role %></p>
-                      <p><strong>User Type:</strong> <select name="user[user_type]" id="user_user_type">
-                          <option value="A">Admin</option>
-                      </select></p>
                       <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
-                      <p><strong>Email: </strong> <%= form.text_field :email %> </p>
+                        <p><strong>Email: </strong> <%= form.text_field :email %> </p>
                       <p><strong>Contact No. </strong> <%= form.number_field :contact_num %> </p>
                       <p><strong>Address: <%= form.text_field :address %></p>
                   </div>
                   <div class="col-xs-12 col-sm-4 emphasis text-center divider">
-                      <h2><strong>PHP <%= form.text_field :balance, :size=>"5px"  %></strong></h2>
-                      <p><small>Balance</small></p>
+                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" %></strong></h2>
+                      <p><small>6 Digit Pin Code</small></p>
                       <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
                       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
                   </div>

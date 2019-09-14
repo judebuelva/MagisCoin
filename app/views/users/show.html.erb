@@ -31,20 +31,17 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-            </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Admin','users/new/admin', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Customer', 'users/new/customer', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <%= link_to 'Merchant', 'users/new/merchant', :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
-          </li>
-        </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Users', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+              </li>
+          </ul>
       </div>
     </div>
   </nav>

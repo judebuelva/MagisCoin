@@ -131,6 +131,8 @@ class UsersController < ApplicationController
     @transaction.amount = params[:balance].to_f
     @transaction.time_recorded = DateTime.now
     @transaction.save
+    puts @user.errors
+    redirect_to users_path
   end
 
   def payment
@@ -153,7 +155,8 @@ class UsersController < ApplicationController
     @transaction.amount = params[:balance].to_f
     @transaction.time_recorded = DateTime.now
     @transaction.save
-
+    puts @user.errors
+    redirect_to users_path
   end
 
   # GET /users/1/edit
