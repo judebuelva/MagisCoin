@@ -44,6 +44,7 @@
             </thead>
             <tbody>
                 <% @transactions.each do |transaction| %>
+                <% if current_user.try(:user_type) == "A" %>
                 <tr>
                     <td><%= transaction.send_id %></td>
                     <td><%= transaction.recv_id %></td>
@@ -55,6 +56,22 @@
                     <td><%= link_to '', edit_transaction_path(transaction), :class => 'btn btn-secondary glyphicon glyphicon-pencil'%></td>
                     <td><%= link_to '', transaction, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
                 </tr>
+                <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+                <tr>
+                    <td><% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
+                        <%= transaction.send_id %>
+                    </td>
+                    <td><%= transaction.recv_id %></td>
+                    <td><%= transaction.card_id %></td>
+                    <td><%= transaction.purchase_type %></td>
+                    <td><%= transaction.amount %></td>
+                    <td><%= transaction.time_recorded %></td>
+                    <td><%= link_to '', transaction, :class => 'btn btn-info glyphicon glyphicon-eye-open'%></td>
+                    <td><%= link_to '', edit_transaction_path(transaction), :class => 'btn btn-secondary glyphicon glyphicon-pencil'%></td>
+                    <td><%= link_to '', transaction, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
+                    <% end %>
+                </tr>
+                <% end %>
                 <% end %>
             </tbody>
         </table>

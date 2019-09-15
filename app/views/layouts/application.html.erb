@@ -7,6 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MagisCoin - Admin</title>
+
+    <!-- Custom fonts for this theme -->
+    <link href="../../stylesheets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
   <body>
@@ -19,11 +34,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <% if current_user.try(:user_type) == "A" %>
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Home', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                  <%= link_to 'Users', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                  <%= link_to 'Profile', current_user, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
@@ -31,13 +47,27 @@
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Reload Account', "users/buy_load", :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
+                <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+                <li class="nav-item mx-0 mx-lg-1">
+                  <%= link_to 'Profile', current_user, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                  <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                </li>
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Pay to Merchant', "users/payment", :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
+                <% end %>
                 <li class="nav-link py-3 px-0 px-lg-3 rounded" style="color: white; background: rgba(255,255,255,0.1); border: 2px rgba(255,255,255,0.5) solid; border-radius: 100px; padding: 5px;">
                   <% if current_user %>
-                    Logged in as <%= current_user.f_name && current_user.l_name %>.
-                    <%= link_to "Log out", logout_path %>
+                    Logged in as
+                    <% if current_user.try(:user_type) == "A" || current_user.try(:user_type) == "C" %>
+                        <%= current_user.f_name + " " + current_user.l_name %>.
+                        <%= link_to "Log out", logout_path %>
+                    <% elsif current_user.try(:user_type) == "M"%>
+                        <%= current_user.owner_fname + " " + current_user.owner_lname %>  .
+                        <%= link_to "Log out", logout_path %>
+                    <% end %>
                   <% else %>
                     <%= link_to "Sign up", sign_up_path %> or
                     <%= link_to "Log in", login_path %>

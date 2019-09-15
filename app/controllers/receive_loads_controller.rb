@@ -6,7 +6,9 @@ class ReceiveLoadsController < ApplicationController
   def index
     @receive_loads = ReceiveLoad.all
   end
-
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   # GET /receive_loads/1
   # GET /receive_loads/1.json
   def show

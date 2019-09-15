@@ -21,6 +21,7 @@
 </head>
 
 <body id="page-top">
+<% if current_user.try(:user_type) == "A" %>
 <p id="notice"><%= notice %></p>
 <div class="container">
     <h4>Create User</h4><div class="btn-group" role="group">
@@ -77,5 +78,25 @@
         </div>
     </div>
 </div>
+<% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+<div class="container">
+<h1>Welcome to MagisCoin, <%= current_user.f_name %>!</h1>
+</div>
+<% else %>
+<div class="container">
+    <h1>Login</h1>
+<%= form_tag '/login', method: :post do |f|%>
+  <p>
+    <h4>Contact Number</h4>
+    <%= text_field_tag :contact_num, params[:contact_num] %>
+  </p>
+  <p>
+    <h4>Pin Code</h4>
+    <%= password_field_tag :password_digest %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %>
+</div>
+<% end %>
 </body>
 </html>

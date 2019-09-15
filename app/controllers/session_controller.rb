@@ -19,4 +19,7 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to users_path, :notice => "Logged out!"
   end
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 end
