@@ -31,11 +31,6 @@
                       <%= form_tag('/users/payment')%>
 
                         <div class="field">
-                          <h4>Input your ID Number:</h4>
-                          <%= text_field_tag :id[0]%>
-                        </div>
-
-                        <div class="field">
                           <h4>Input Amount to Pay:</h4>
                         <h3><strong>PHP </strong></h3>
                           <%= text_field_tag :balance %>
@@ -43,7 +38,7 @@
 
                         <div class="field">
                           <h4>Input ID Number of Merchant:</h4>
-                          <%= text_field_tag :id[1]%>
+                          <%= text_field_tag :id%>
                         </div>
                         <div class="actions">
                             <%= submit_tag("Send Payment", class: "btn btn-primary btn-block")%>

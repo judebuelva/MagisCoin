@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     get "users/new/admin", to: "users#new_admin"
     post "users/new/admin", to: "users#create_admin"
 
-    get "users/buy_load", to: "users#buy_load"
+    get "users/buy_load", to: "users#buy_load", :as => "buy_load"
     post "users/buy_load", to: "users#buyload"
 
-    get "users/payment", to: "users#purchase"
+    get "users/payment", to: "users#purchase", :as => "payment"
     post "users/payment", to: "users#payment"
 
     get '/login' => 'session#new'

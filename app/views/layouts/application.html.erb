@@ -45,7 +45,7 @@
                   <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                  <%= link_to 'Reload Account', "users/buy_load", :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                  <%= link_to 'Reload Account', buy_load_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
                 <li class="nav-item mx-0 mx-lg-1">
@@ -55,7 +55,7 @@
                   <%= link_to 'Transactions', transactions_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                  <%= link_to 'Pay to Merchant', "users/payment", :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                  <%= link_to 'Pay to Merchant', payment_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
                 <% end %>
                 <li class="nav-link py-3 px-0 px-lg-3 rounded" style="color: white; background: rgba(255,255,255,0.1); border: 2px rgba(255,255,255,0.5) solid; border-radius: 100px; padding: 5px;">

@@ -126,7 +126,7 @@ class UsersController < ApplicationController
     @user.update( balance: prev_balance.to_f + params[:balance].to_f )
 
     @transaction = Transaction.new()
-    # @transaction.send_id = params[:id[0]]
+    @transaction.send_id = current_user.id
     @transaction.recv_id = params[:id]
     @transaction.card_id = nil
     @transaction.purchase_type = "Buy Load"
@@ -138,21 +138,21 @@ class UsersController < ApplicationController
   end
 
   def payment
-    @user = User.find(params[:id[0]])
+    @user = User.find(current_user.id)
         if @user.balance.to_f > params[:balance].to_f
             send_prev = @user.balance
             @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
             @user = 0
 
-            @user = User.find(params[:id[1]])
+            @user = User.find(params[:id])
             recv_prev = @user.balance
             @user.update( balance: recv_prev.to_f + params[:balance].to_f )
             puts @user.errors.full_messages
 
             @transaction = Transaction.new()
-            @transaction.send_id = params[:id[0]]
-            @transaction.recv_id = params[:id[1]]
+            @transaction.send_id = current_user.id
+            @transaction.recv_id = params[:id]
             @transaction.card_id = nil
             @transaction.purchase_type = "Send Load"
             @transaction.amount = params[:balance].to_f
@@ -162,7 +162,8 @@ class UsersController < ApplicationController
 
             redirect_to users_path
         else
-            redirect_to payment
+            redirect_to payment_path
+            flash[:error] = 'Insufficient Funds'
         end
   end
 
