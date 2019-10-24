@@ -28,6 +28,10 @@ class QrsController < ApplicationController
   def create
     @qr = Qr.new(qr_params)
 
+    @qr.user_id = current_user.id
+
+    @qr.uniq_id = Digest::SHA1.hexdigest([Time.now, rand].join)
+
     respond_to do |format|
       if @qr.save
         format.html { redirect_to @qr, notice: 'Qr was successfully created.' }
@@ -71,6 +75,6 @@ class QrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def qr_params
-      params.require(:qr).permit(:user_id)
+      # params.require(:qr).permit(:user_id)
     end
 end

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<%# <%= javascript_include_tag :defaults %>
 
 <head>
 
@@ -9,6 +10,9 @@
   <meta name="author" content="">
 
   <title>MagisCoin - Admin</title>
+  <script type="text/javascript" src="instascan.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 
   <!-- Custom fonts for this theme -->
   <link href="../../stylesheets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +22,8 @@
   <!-- Theme CSS -->
   <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -29,15 +35,20 @@
                 <div class="col-xs-12 col-sm-8">
                     <%= form_tag('/users/buy_load')%>
                     <div class="field">
+                      <div>
+                        <h4>Scan your QR to be loaded</h4>
+                        <video id="preview"></video>
+                      </div>
+
                       <h4>Input your ID Number:</h4>
                       <%= text_field_tag (:id)%>
                     </div>
                     <div class="field">
-                      <h4>Input desired balance:</h4>
+                      <h4>Input desired amount:</h4>
                       <h3><strong>PHP </strong></h3><%= text_field_tag (:balance)%>
                     </div>
                     <div class="actions">
-                        <%= submit_tag("Load User", class: "btn btn-primary btn-block")%>
+                        <%= submit_tag "Load User", data:{:confirm => 'Are you sure to load your account?'}, class: "btn btn-primary btn-block" %>
                         <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
                     </div>
                     </form>
@@ -48,3 +59,16 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner.addListener('scan', function(content) {
+         alert('Is your account, ' + content + "?");
+         scanner.stop();
+     });
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      }
+  });
+</script>

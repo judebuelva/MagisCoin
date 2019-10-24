@@ -15,7 +15,7 @@ class User < ApplicationRecord
   	validates :email,  presence: true, uniqueness: true
   	validates :contact_num, presence: true
   	validates :address, presence: true
-  	validates :balance, presence: true, numericality: {greater_than_or_equal_to: 0}
+  	validates :balance, presence: true, numericality: {greater_than_or_equal_to: 0}, numericality: {less_than_or_equal_to: 10000}
   	validates :user_type, presence: true
     #validates :password_digest, presence: true, length: {minimum: 6, maximum: 6}
 end

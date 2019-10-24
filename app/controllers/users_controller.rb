@@ -32,14 +32,12 @@ class UsersController < ApplicationController
   end
 
   def buy_load
-    # @user = User.new
-    #get new then redirect to load_user page
-    #preferrably just it has its own URL
+  end
+
+  def qr_reader
   end
 
   def purchase
-    # @user = User.new
-    #preferrably just it has its own URL
   end
 
   def create_customer
@@ -59,11 +57,6 @@ class UsersController < ApplicationController
       @user.password = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
        @user.save
-        #format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #format.json { render :show, status: :created, location: @user }
-      #else
-
-      #end
       redirect_to users_path
   end
 
@@ -84,12 +77,6 @@ class UsersController < ApplicationController
       @user.user_type = "M"
       #all fields that should be null (nil) or 0
      @user.save
-      #   format.html { redirect_to @user, notice: 'User was successfully created.' }
-      #   format.json { render :show, status: :created, location: @user }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @user.errors, status: :unprocessable_entity }
-      # end
       redirect_to users_path #replace for home of user when registered
   end
 
@@ -109,18 +96,14 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "A"
       @user.save
-      #   format.html { redirect_to @user, notice: 'User was successfully created.' }
-      #   format.json { render :show, status: :created, location: @user }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @user.errors, status: :unprocessable_entity }
-      # end
       redirect_to users_path
   end
 
+  def qrreader
+    @user = User.find(params[:id])
+  end
+
   def buyload
-    # @user = User.update(params[:id], :balance => params[:balance])
-    # @user = User.where(:params[:id])
     @user = User.find(params[:id])
     prev_balance = @user.balance
     @user.update( balance: prev_balance.to_f + params[:balance].to_f )

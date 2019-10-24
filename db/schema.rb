@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_075937) do
+ActiveRecord::Schema.define(version: 2019_10_23_061902) do
 
   create_table "buy_loads", force: :cascade do |t|
     t.integer "send_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_075937) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uniq_id"
   end
 
   create_table "receive_loads", force: :cascade do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_075937) do
     t.datetime "time_recorded"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ReferenceNo"
   end
 
   create_table "users", force: :cascade do |t|

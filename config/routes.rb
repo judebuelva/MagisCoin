@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-    get "users/new/customer", to: "users#new_customer"
+    get "users/new/customer", to: "users#new_customer", :as => "new_customer"
     post "users/new/customer", to: "users#create_customer"
 
-    get "users/new/merchant", to: "users#new_merchant"
+    get "users/new/merchant", to: "users#new_merchant", :as => "new_merchant"
     post "users/new/merchant", to: "users#create_merchant"
 
-    get "users/new/admin", to: "users#new_admin"
+    get "users/new/admin", to: "users#new_admin", :as => "new_admin"
     post "users/new/admin", to: "users#create_admin"
 
     get "users/buy_load", to: "users#buy_load", :as => "buy_load"
     post "users/buy_load", to: "users#buyload"
+
+    get "users/qrreader", to: "users#qr_reader", :as => "qr_reader"
+    post "users/qrreader", to: "users#qrreader"
 
     get "users/payment", to: "users#purchase", :as => "payment"
     post "users/payment", to: "users#payment"

@@ -25,9 +25,9 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
     <h4>Create User</h4><div class="btn-group" role="group">
-        <%= link_to 'Customer', "users/new/customer", :class => 'btn btn-warning' %>
-        <%= link_to 'Merchant', "users/new/merchant", :class => 'btn btn-success' %>
-        <%= link_to 'Admin', "users/new/admin", :class => 'btn btn-danger' %>
+        <%= link_to 'Customer', new_customer_path, :class => 'btn btn-warning' %>
+        <%= link_to 'Merchant', new_merchant_path, :class => 'btn btn-success' %>
+        <%= link_to 'Admin', new_admin_path, :class => 'btn btn-danger' %>
     </div>
     <br><br>
 	<div class="row">
@@ -70,7 +70,6 @@
                     <td><%= link_to '', user, :class => 'btn btn-info glyphicon glyphicon-eye-open'%></td>
                     <td><%= link_to '', edit_user_path(user), :class => 'btn btn-secondary glyphicon glyphicon-pencil'%></td>
                     <td><%= link_to '', user, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
-
                 </tr>
                 <% end %>
             </tbody>
@@ -78,9 +77,13 @@
         </div>
     </div>
 </div>
-<% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+<% elsif current_user.try(:user_type) == "C"  %>
 <div class="container">
 <h1>Welcome to MagisCoin, <%= current_user.f_name %>!</h1>
+</div>
+<% elsif current_user.try(:user_type) == "M"  %>
+<div class="container">
+<h1>Welcome to MagisCoin, <%= current_user.owner_fname %>!</h1>
 </div>
 <% else %>
 <div class="container">
