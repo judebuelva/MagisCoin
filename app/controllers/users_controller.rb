@@ -34,9 +34,6 @@ class UsersController < ApplicationController
   def buy_load
   end
 
-  def qr_reader
-  end
-
   def purchase
   end
 
@@ -97,10 +94,6 @@ class UsersController < ApplicationController
       @user.user_type = "A"
       @user.save
       redirect_to users_path
-  end
-
-  def qrreader
-    @user = User.find(params[:id])
   end
 
   def buyload
