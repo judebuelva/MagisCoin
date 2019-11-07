@@ -5,16 +5,10 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
-    if @current_user.user_type == "A"
       respond_to do |format|
         format.html
         format.json {render :json => @transactions}
       end
-    elsif @current_user.user_type == "C" || @current_user.user_type == "M"
-      if transaction.send_id == current_user.id || transaction.recv_id == current_user.id
-        
-      end
-    end
   end
 
   # GET /transactions/1
