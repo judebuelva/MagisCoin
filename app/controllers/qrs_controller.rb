@@ -5,6 +5,7 @@ class QrsController < ApplicationController
   # GET /qrs.json
   def index
     @qrs = Qr.all
+    render json: @qrs, status: :ok
   end
   def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -5,12 +5,39 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+
+    respond_to do |format|
+        format.html
+        format.json { render :json => @users }
+      end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @data = {}
+  if @user.user_type == "A" || @user.user_type == "C"
+    @data["f_name"] = @user.f_name
+    @data["l_name"] = @user.l_name
+  elsif @user.user_type == "A"
+    @data["user_type"] = @user.user_type
+  elsif @user.user_type == "M"
+    @data["merchant_name"] = @user.merchant_name
+    @data["owner_fname"] = @user.owner_fname
+    @data["owner_lname"] = @user.owner_lname
   end
+    @data["birthday"] = @user.birthday
+    @data["email"] = @user.email
+    @data["contact_num"] = @user.contact_num
+    @data["address"] = @user.address
+    @data["balance"] = @user.balance
+    respond_to do |format|
+        format.html
+        format.json { render :json =>  @data}
+      end
+  end
+
   def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -54,7 +81,15 @@ class UsersController < ApplicationController
       @user.password = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
        @user.save
-      redirect_to users_path
+       respond_to do |format|
+         if @user.save
+           format.html { redirect_to @user, notice: 'Customer was successfully created.' }
+           format.json { render :show, status: :created, location: @user }
+         else
+           format.html { render :new }
+           format.json { render json: @user.errors, status: :unprocessable_entity }
+         end
+       end
   end
 
   def create_merchant
@@ -74,7 +109,16 @@ class UsersController < ApplicationController
       @user.user_type = "M"
       #all fields that should be null (nil) or 0
      @user.save
-      redirect_to users_path #replace for home of user when registered
+     respond_to do |format|
+       if @user.save
+         format.html { redirect_to @user, notice: 'Merchant was successfully created.' }
+         format.json { render :show, status: :created, location: @user }
+       else
+         format.html { render :new }
+         format.json { render json: @user.errors, status: :unprocessable_entity }
+       end
+     end
+
   end
 
   def create_admin
@@ -93,7 +137,16 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "A"
       @user.save
-      redirect_to users_path
+      respond_to do |format|
+        if @user.save
+          format.html { redirect_to @user, notice: 'Merchant was successfully created.' }
+          format.json { render :show, status: :created, location: @user }
+        else
+          format.html { render :new }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+
   end
 
   def buyload
@@ -115,32 +168,32 @@ class UsersController < ApplicationController
 
   def payment
     @user = User.find(current_user.id)
-        if @user.balance.to_f > params[:balance].to_f
-            send_prev = @user.balance
-            @user.update( balance: send_prev.to_f - params[:balance].to_f )
+      if @user.balance.to_f > params[:balance].to_f
+          send_prev = @user.balance
+          @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
-            @user = 0
+          @user = 0
 
-            @user = User.find(params[:id])
-            recv_prev = @user.balance
-            @user.update( balance: recv_prev.to_f + params[:balance].to_f )
-            puts @user.errors.full_messages
+          @user = User.find(params[:id])
+          recv_prev = @user.balance
+          @user.update( balance: recv_prev.to_f + params[:balance].to_f )
+          puts @user.errors.full_messages
 
-            @transaction = Transaction.new()
-            @transaction.send_id = current_user.id
-            @transaction.recv_id = params[:id]
-            @transaction.card_id = nil
-            @transaction.purchase_type = "Send Load"
-            @transaction.amount = params[:balance].to_f
-            @transaction.time_recorded = DateTime.now
-            @transaction.save
-            puts @user.errors
+          @transaction = Transaction.new()
+          @transaction.send_id = current_user.id
+          @transaction.recv_id = params[:id]
+          @transaction.card_id = nil
+          @transaction.purchase_type = "Send Load"
+          @transaction.amount = params[:balance].to_f
+          @transaction.time_recorded = DateTime.now
+          @transaction.save
+          puts @user.errors
 
-            redirect_to users_path
-        else
-            redirect_to payment_path
-            flash[:error] = 'Insufficient Funds'
-        end
+          redirect_to users_path
+      else
+          redirect_to payment_path
+          flash[:error] = 'Insufficient Funds'
+      end
   end
 
   # GET /users/1/edit
