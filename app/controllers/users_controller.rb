@@ -15,23 +15,23 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    current_user = User.find(params[:id])
     @data = {}
-  if @user.user_type == "A" || @user.user_type == "C"
-    @data["f_name"] = @user.f_name
-    @data["l_name"] = @user.l_name
-  elsif @user.user_type == "A"
-    @data["user_type"] = @user.user_type
-  elsif @user.user_type == "M"
-    @data["merchant_name"] = @user.merchant_name
-    @data["owner_fname"] = @user.owner_fname
-    @data["owner_lname"] = @user.owner_lname
+  if current_user.user_type == "A" || current_user.user_type == "C"
+    @data["f_name"] = current_user.f_name
+    @data["l_name"] = current_user.l_name
+  elsif current_user.user_type == "A"
+    @data["user_type"] = current_user.user_type
+  elsif current_user.user_type == "M"
+    @data["merchant_name"] = current_user.merchant_name
+    @data["owner_fname"] = current_user.owner_fname
+    @data["owner_lname"] = current_user.owner_lname
   end
-    @data["birthday"] = @user.birthday
-    @data["email"] = @user.email
-    @data["contact_num"] = @user.contact_num
-    @data["address"] = @user.address
-    @data["balance"] = @user.balance
+    @data["birthday"] = current_user.birthday
+    @data["email"] = current_user.email
+    @data["contact_num"] = current_user.contact_num
+    @data["address"] = current_user.address
+    @data["balance"] = current_user.balance
     respond_to do |format|
         format.html
         format.json { render :json =>  @data}
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def current_user
-  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   # GET /users/new
   def new
