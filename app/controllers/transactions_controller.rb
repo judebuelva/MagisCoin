@@ -11,7 +11,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.json
   def show
   end
-
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   # GET /transactions/new
   def new
     @transaction = Transaction.new

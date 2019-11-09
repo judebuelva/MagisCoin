@@ -1,124 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MagisCoin - Admin</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="../../stylesheets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body id="page-top">
+<% if current_user.try(:user_type) == "A" %>
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <h4>Create User</h4><div class="btn-group" role="group">
+        <%= link_to 'Customer', "users/new/customer", :class => 'btn btn-warning' %>
+        <%= link_to 'Merchant', "users/new/merchant", :class => 'btn btn-success' %>
+        <%= link_to 'Admin', "users/new/admin", :class => 'btn btn-danger' %>
+    </div>
+    <br><br>
+	<div class="row">
+        <div class="table-responsive col-md-12">
+        <table id="sort2" class="grid table table-bordered table-sortable">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Birthday</th>
+                    <th class="text-center">Role</th>
+                    <th class="text-center">Merchant Name</th>
+                    <th class="text-center">Owner's First Name</th>
+                    <th class="text-center">Owner's Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Contact No.</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Balance</th>
+                    <th class="text-center">User Type</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.f_name %></td>
+                    <td><%= user.l_name %></td>
+                    <td><%= user.birthday %></td>
+                    <td><%= user.role %></td>
+                    <td><%= user.merchant_name %></td>
+                    <td><%= user.owner_fname %></td>
+                    <td><%= user.owner_lname %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.contact_num %></td>
+                    <td><%= user.address %></td>
+                    <td><%= user.balance %></td>
+                    <td><%= user.user_type %></td>
+                    <td><%= link_to '', user, :class => 'btn btn-info glyphicon glyphicon-eye-open'%></td>
+                    <td><%= link_to '', edit_user_path(user), :class => 'btn btn-secondary glyphicon glyphicon-pencil'%></td>
+                    <td><%= link_to '', user, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
 
-<h1>Users</h1>
-
-<h2>Admin</h2>
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Role</th>
-      <th>Email</th>
-      <th>Contact number</th>
-      <th>Address</th>
-      <th>Balance</th>
-      <th>User type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <% unless user.user_type != "A" %>
-        <td><%= user.f_name %></td>
-        <td><%= user.l_name %></td>
-        <td><%= user.role %></td>
-        <td><%= user.email %></td>
-        <td><%= user.contact_num %></td>
-        <td><%= user.address %></td>
-        <td><%= user.balance %></td>
-        <td><%= user.user_type %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h2>Consumer</h2>
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Birthday</th>
-      <th>Email</th>
-      <th>Contact number</th>
-      <th>Address</th>
-      <th>Balance</th>
-      <th>User type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <% unless user.user_type != "C" %>
-        <td><%= user.f_name %></td>
-        <td><%= user.l_name %></td>
-        <td><%= user.birthday %></td>
-        <td><%= user.email %></td>
-        <td><%= user.contact_num %></td>
-        <td><%= user.address %></td>
-        <td><%= user.balance %></td>
-        <td><%= user.user_type %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<h2>Merchant</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Merchant name</th>
-      <th>Owner first name</th>
-      <th>Owner last name</th>
-      <th>Email</th>
-      <th>Contact number</th>
-      <th>Address</th>
-      <th>Balance</th>
-      <th>User type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <% unless user.user_type != "M" %>
-        <td><%= user.merchant_name %></td>
-        <td><%= user.owner_fname %></td>
-        <td><%= user.owner_lname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.contact_num %></td>
-        <td><%= user.address %></td>
-        <td><%= user.balance %></td>
-        <td><%= user.user_type %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<h3>Register an account:</h3>
-| <%= link_to 'Admin Account', 'users/new/admin' %> |
-  <%= link_to 'Customer Account', 'users/new/customer' %>   |
-  <%= link_to 'Merchant Account', 'users/new/merchant' %>   |
-
-  <%= link_to 'Load Balance', 'users/buy_load' %> |
-  <%= link_to 'Purchase', 'users/payment' %> |
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+<div class="container">
+<h1>Welcome to MagisCoin, <%= current_user.f_name %>!</h1>
+</div>
+<% else %>
+<div class="container">
+    <h1>Login</h1>
+<%= form_tag '/login', method: :post do |f|%>
+  <p>
+    <h4>Contact Number</h4>
+    <%= text_field_tag :contact_num, params[:contact_num] %>
+  </p>
+  <p>
+    <h4>Pin Code</h4>
+    <%= password_field_tag :password_digest %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %>
+</div>
+<% end %>
+</body>
+</html>

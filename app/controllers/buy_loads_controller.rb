@@ -3,6 +3,9 @@ class BuyLoadsController < ApplicationController
 
   # GET /buy_loads
   # GET /buy_loads.json
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   def index
     @buy_loads = BuyLoad.all
   end

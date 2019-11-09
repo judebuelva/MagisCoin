@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Login</h1>
+<%= form_tag '/login', method: :post do |f|%>
+  <p>
+    <h4>Contact Number</h4>
+    <%= text_field_tag :contact_num, params[:contact_num] %>
+  </p>
+  <p>
+    <h4>Pin Code</h4>
+    <%= password_field_tag :password_digest %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %>
+</div>

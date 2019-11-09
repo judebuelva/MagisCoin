@@ -1,7 +1,28 @@
-<h1>Register a Customer</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= @user.to_json %>
+<head>
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MagisCoin - Admin</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="../../stylesheets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body id="page-top">
+
+<p id="notice"><%= notice %></p>
 <%= form_for(@user, :url=>{:action => 'create_customer'}) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -14,45 +35,31 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label "First name"%>
-    <%= form.text_field :f_name %>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+              <div class="col-sm-12">
+                  <h2>Create Customer Account</h2>
+                  <div class="col-xs-12 col-sm-8">
+                      <p class="text center" id="notice"><%= notice %></p>
+                    <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
+                    <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
+                      <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
+                      <p><strong>Email: </strong> <%= form.text_field :email %> </p>
+                      <p><strong>Contact No. </strong> <%= form.number_field :contact_num %> </p>
+                      <p><strong>Address: <%= form.text_field :address %></p>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 emphasis text-center divider">
+                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" %></strong></h2>
+                      <p><small>6 Digit Pin Code</small></p>
+                      <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
+                      <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
+                  </div>
+                  <%end%>
+      	 </div>
+  		</div>
+  	</div>
   </div>
 
-  <div class="field">
-    <%= form.label "Last name" %>
-    <%= form.text_field :l_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Contact Number" %>
-    <%= form.number_field :contact_num %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field(:password_digest) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Create Customer" %>
-  </div>
-
-  <%= link_to 'Back', users_path %>
-<% end %>
+</body>
+</html>

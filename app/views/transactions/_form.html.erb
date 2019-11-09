@@ -10,42 +10,33 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :send_id %>
-    <%= form.number_field :send_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :recv_id %>
-    <%= form.number_field :recv_id %>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+              <div class="col-sm-12">
+                  <h2>Edit Transaction Details</h2>
+                  <div class="col-xs-12 col-sm-8">
+                      <p class="text center" id="notice"><%= notice %></p>
+                      <p><strong>Sender's ID: </strong> <%= form.number_field :send_id %></p>
+                      <p><strong>Receipient's ID: </strong> <%= form.number_field :recv_id %></p>
+                      <p><strong>Purchase Type: </strong> <select name="transaction[purchase_type]" id="transaction_purchase_type">
+                          <option value="0">Buy Load</option>
+                          <option value="1">Send Load</option>
+                          <option value="2">Receive Load</option>
+                      </select> </p>
+                      <p><strong>Card ID: </strong>     <%= form.number_field :card_id %> </p>
+                      <p><strong>Time Recorded: </strong><%= form.datetime_select :time_recorded %></p>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 emphasis text-center divider">
+                      <h2><strong>PHP <%= form.text_field :amount, :size=>"5px"  %></strong></h2>
+                      <p><small>Amount Transferred</small></p>
+                      <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
+                      <%= link_to ' Show', @transaction, :class => "btn btn-primary btn-block fa fa-eye", :style => "color:white;" %>
+                      <%= link_to ' Go Back', transactions_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
+                  </div>
+                  <%end%>
+      	 </div>
+  		</div>
+  	</div>
   </div>
-
-  <div class="field">
-    <%= form.label :card_id %>
-    <%= form.number_field :card_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :purchase_type %>
-    <select name="transaction[purchase_type]" id="transaction_purchase_type">
-        <option value="0">Buy Load</option>
-        <option value="1">Send Load</option>
-        <option value="2">Receive Load</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :time_recorded %>
-    <%= form.datetime_select :time_recorded %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

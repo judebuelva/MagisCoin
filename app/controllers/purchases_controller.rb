@@ -6,7 +6,9 @@ class PurchasesController < ApplicationController
   def index
     @purchases = Purchase.all
   end
-
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   # GET /purchases/1
   # GET /purchases/1.json
   def show

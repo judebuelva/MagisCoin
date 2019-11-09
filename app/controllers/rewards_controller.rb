@@ -6,7 +6,9 @@ class RewardsController < ApplicationController
   def index
     @rewards = Reward.all
   end
-
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   # GET /rewards/1
   # GET /rewards/1.json
   def show

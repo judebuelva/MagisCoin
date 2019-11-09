@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   end
-
+  def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -41,8 +43,8 @@ class UsersController < ApplicationController
 
   def create_customer
       @user = User.new
-      @user.f_name = params[:user][:f_name]
-      @user.l_name = params[:user][:l_name]
+      @user.f_name = params[:user][:f_name].capitalize
+      @user.l_name = params[:user][:l_name].capitalize
       @user.birthday = params[:user][:birthday]
       @user.role = nil
       @user.merchant_name = nil
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "C"
-      @user.password_digest = params[:user][:password_digest]
+      @user.password = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
        @user.save
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -70,10 +72,10 @@ class UsersController < ApplicationController
       @user.l_name = nil
       @user.birthday = nil
       @user.role = nil
-      @user.password_digest = params[:user][:password_digest]
-      @user.merchant_name = params[:user][:merchant_name]
-      @user.owner_fname = params[:user][:owner_fname]
-      @user.owner_lname = params[:user][:owner_lname]
+      @user.password = params[:user][:password_digest]
+      @user.merchant_name = params[:user][:merchant_name].capitalize
+      @user.owner_fname = params[:user][:owner_fname].capitalize
+      @user.owner_lname = params[:user][:owner_lname].capitalize
       @user.email = params[:user][:email]
       @user.contact_num = params[:user][:contact_num]
       @user.address = params[:user][:address]
@@ -92,11 +94,16 @@ class UsersController < ApplicationController
 
   def create_admin
       @user = User.new(user_params)
-      @user.f_name = params[:user][:f_name]
-      @user.l_name = params[:user][:l_name]
+      @user.f_name = params[:user][:f_name].capitalize
+      @user.l_name = params[:user][:l_name].capitalize
       @user.birthday = nil
+<<<<<<< HEAD
       @user.role = params[:user][:role]
       @user.password_digest = params[:user][:password_digest]
+=======
+      @user.role = params[:user][:role].capitalize
+      @user.password = params[:user][:password_digest]
+>>>>>>> 654034dd8880123003dd7c6f97e3685909817871
       @user.merchant_name = nil
       @user.owner_fname = nil
       @user.owner_lname = nil
@@ -130,30 +137,41 @@ class UsersController < ApplicationController
     @transaction.amount = params[:balance].to_f
     @transaction.time_recorded = DateTime.now
     @transaction.save
+<<<<<<< HEAD
     puts @transaction.errors.full_messages
+=======
+    puts @user.errors
+    redirect_to users_path
+>>>>>>> 654034dd8880123003dd7c6f97e3685909817871
   end
 
   def payment
     @user = User.find(params[:id[0]])
-    send_prev = @user.balance
-    @user.update( balance: send_prev.to_f - params[:balance].to_f )
+        if @user.balance.to_f > params[:balance].to_f
+            send_prev = @user.balance
+            @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
-    @user = 0
+            @user = 0
 
-    @user = User.find(params[:id[1]])
-    recv_prev = @user.balance
-    @user.update( balance: recv_prev.to_f + params[:balance].to_f )
-    puts @user.errors.full_messages
+            @user = User.find(params[:id[1]])
+            recv_prev = @user.balance
+            @user.update( balance: recv_prev.to_f + params[:balance].to_f )
+            puts @user.errors.full_messages
 
-    @transaction = Transaction.new()
-    @transaction.send_id = params[:id[0]]
-    @transaction.recv_id = params[:id[1]]
-    @transaction.card_id = nil
-    @transaction.purchase_type = "Send Load"
-    @transaction.amount = params[:balance].to_f
-    @transaction.time_recorded = DateTime.now
-    @transaction.save
+            @transaction = Transaction.new()
+            @transaction.send_id = params[:id[0]]
+            @transaction.recv_id = params[:id[1]]
+            @transaction.card_id = nil
+            @transaction.purchase_type = "Send Load"
+            @transaction.amount = params[:balance].to_f
+            @transaction.time_recorded = DateTime.now
+            @transaction.save
+            puts @user.errors
 
+            redirect_to users_path
+        else
+            redirect_to payment
+        end
   end
 
   # GET /users/1/edit
