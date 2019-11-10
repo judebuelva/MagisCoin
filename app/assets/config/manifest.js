@@ -2,4 +2,5 @@
 //= link_directory ../javascripts .js
 //= link_directory ../stylesheets .css
 //= require instascan
-//= require /users/qrcode
+//= require qrcode
+//= require jquery

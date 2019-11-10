@@ -16,3 +16,4 @@
 // = require_tree
 // = require instascan
 // = require users/qrcode
+// = require jquery
