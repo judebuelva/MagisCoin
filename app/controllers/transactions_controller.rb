@@ -14,6 +14,10 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render :json => @transactions}
+    end
   end
 
   def current_user

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+    get 'users/showqr' => 'users#showqr', :as => "show_qr"
+    post 'users/showqr' => 'users#show_qr'
+
+
     get '/login' => 'session#new'
     post '/login' => 'session#create'
     get 'logout' => 'session#destroy'

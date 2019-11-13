@@ -64,6 +64,9 @@ class UsersController < ApplicationController
   def purchase
   end
 
+  def showqr
+  end
+
   def create_customer
       @user = User.new
       @user.f_name = params[:user][:f_name].capitalize
@@ -196,6 +199,9 @@ class UsersController < ApplicationController
       end
   end
 
+  def show_qr
+    @user = User.find(current_user.id)
+  end
   # GET /users/1/edit
   def edit
   end

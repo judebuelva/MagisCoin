@@ -23,10 +23,12 @@
 <body id="page-top">
 <p id="notice"><%= notice %></p>
 <div class="container">
-    <h4>Create a Transaction</h4><div class="btn-group" role="group">
-        <%= link_to 'Buy Load', new_transaction_path, :class => 'btn btn-warning' %>
-        <%= link_to 'Send Load', new_transaction_path, :class => 'btn btn-success' %>
-    </div>
+  <% if current_user.try(:user_type) == "A" %>
+      <h4>Create a Transaction</h4><div class="btn-group" role="group">
+          <%= link_to 'Buy Load', new_transaction_path, :class => 'btn btn-warning' %>
+          <%= link_to 'Send Load', new_transaction_path, :class => 'btn btn-success' %>
+      </div>
+      <% end %>
     <br><br>
 	<div class="row">
         <div class="table-responsive col-md-12">
