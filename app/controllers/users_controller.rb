@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     current_user = User.find(params[:id])
     @data = {}
+    @data["id"] = current_user.id
   if current_user.user_type == "A" || current_user.user_type == "C"
     @data["f_name"] = current_user.f_name
     @data["l_name"] = current_user.l_name
