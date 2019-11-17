@@ -4,18 +4,21 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    # if current_user.user_type == "A" may bug
     @users = User.all
+
 
     respond_to do |format|
         format.html
         format.json { render :json => @users }
       end
+    # end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    current_user = User.find(params[:id])
+    # current_user = User.find(params[:id])
     @data = {}
     @data["id"] = current_user.id
   if current_user.user_type == "A" || current_user.user_type == "C"
@@ -84,16 +87,15 @@ class UsersController < ApplicationController
       @user.user_type = "C"
       @user.password = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
-       @user.save
-       respond_to do |format|
-         if @user.save
-           format.html { redirect_to @user, notice: 'Customer was successfully created.' }
-           format.json { render :show, status: :created, location: @user }
-         else
-           format.html { render :new }
-           format.json { render json: @user.errors, status: :unprocessable_entity }
-         end
+     respond_to do |format|
+       if @user.save
+         format.html { redirect_to @user, notice: 'Customer was successfully created.' }
+         format.json { render :show, status: :created, location: @user }
+       else
+         format.html { render :new }
+         format.json { render json: @user.errors, status: :unprocessable_entity }
        end
+     end
   end
 
   def create_merchant
@@ -112,7 +114,6 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "M"
       #all fields that should be null (nil) or 0
-     @user.save
      respond_to do |format|
        if @user.save
          format.html { redirect_to @user, notice: 'Merchant was successfully created.' }
@@ -140,10 +141,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "A"
-      @user.save
       respond_to do |format|
         if @user.save
-          format.html { redirect_to @user, notice: 'Merchant was successfully created.' }
+          format.html { redirect_to @user, notice: 'Admin was successfully created.' }
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -167,7 +167,13 @@ class UsersController < ApplicationController
     @transaction.time_recorded = DateTime.now
     @transaction.save
     puts @user.errors
-    redirect_to users_path
+    if @transaction.save
+       format.html { redirect_to @user, notice: 'Account Loaded!' }
+       format.json { render :show, status: :created, location: @user }
+     else
+       format.html { render :new }
+       format.json { render json: @user.errors, status: :unprocessable_entity }
+     end
   end
 
   def payment
@@ -192,11 +198,17 @@ class UsersController < ApplicationController
           @transaction.time_recorded = DateTime.now
           @transaction.save
           puts @user.errors
-
-          redirect_to users_path
+          if @transaction.save
+             format.html { redirect_to @user, notice: 'Load Sent!' }
+             format.json { render :show, status: :created, location: @user }
+           else
+             format.html { render :new }
+             format.json { render json: @user.errors, status: :unprocessable_entity }
+           end
       else
           redirect_to payment_path
           flash[:error] = 'Insufficient Funds'
+          format.json { render json: "Insufficient Funds", status: :unprocessable_entity }
       end
   end
 

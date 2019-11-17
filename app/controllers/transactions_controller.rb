@@ -4,16 +4,28 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
-      respond_to do |format|
-        format.html
-        format.json {render :json => @transactions}
+    if current_user.user_type == "A"
+      @transactions = Transaction.all
+    elsif current_user.user_type == "M" || current_user.user_type == "C"
+      if Transaction.where(send_id: current_user.id) || Transaction.where(recv_id: current_user.id)
+        @transactions = Transaction.where(send_id: current_user.id)
+      # elsif Transaction.where(recv_id: current_user.id)
+        @transactions = Transaction.where(recv_id: current_user.id)
       end
+    # elsif Transaction.where(recv_id: current_user.id)
+    #   @transaction = Transaction.where(recv_id: current_user.id)
+    # maribongun ini
+    end
+    respond_to do |format|
+      format.html
+      format.json {render :json => @transactions}
+    end
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+    @transactions = Transaction.find(params[:id])
     respond_to do |format|
       format.html
       format.json {render :json => @transactions}
