@@ -6,15 +6,19 @@ class TransactionsController < ApplicationController
   def index
     if current_user.user_type == "A"
       @transactions = Transaction.all
-    elsif current_user.user_type == "M" || current_user.user_type == "C"
-      if Transaction.where(send_id: current_user.id) || Transaction.where(recv_id: current_user.id)
-        @transactions = Transaction.where(send_id: current_user.id)
-      # elsif Transaction.where(recv_id: current_user.id)
-        @transactions = Transaction.where(recv_id: current_user.id)
-      end
+      @transactions = Transaction.where(["time_recorded LIKE ?","%#{params[:search]}%"])
+      # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
+      # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
+    else
+    @transactions = Transaction.all
+    # elsif current_user.user_type == "M" || current_user.user_type == "C"
+    #   if Transaction.where(send_id: current_user.id)
+    #     @transactions = Transaction.where(send_id: current_user.id)#.select(:send_id)# && Transaction.where(recv_id: current_user.id)
+    #   elsif Transaction.where(recv_id: current_user.id)
+    #     @transactions = Transaction.where(recv_id: current_user.id)#.select(:recv_id)
+    #   end
     # elsif Transaction.where(recv_id: current_user.id)
     #   @transaction = Transaction.where(recv_id: current_user.id)
-    # maribongun ini
     end
     respond_to do |format|
       format.html

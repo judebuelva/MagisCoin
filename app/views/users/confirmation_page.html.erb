@@ -48,7 +48,7 @@
                   </div>
 
                   <div class="actions">
-                      <%= submit_tag "Load User", data:{:confirm => 'Are you sure to load your account?, '}, class: "btn btn-primary btn-block" %>
+                      <%= submit_tag "Load User", data:{:confirm => 'Are you sure to load your account?, ' User.where(id: :id).select(:merchant_name)}, class: "btn btn-primary btn-block" %>
                       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
                   </div>
                   </form>

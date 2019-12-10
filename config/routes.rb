@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     get "users/payment", to: "users#purchase", :as => "payment"
     post "users/payment", to: "users#payment"
 
+    get "users/withdraw", to: "users#withdrawal", :as => "with_draw"
+    post "users/withdraw", to: "users#withdraw"
 
+    get "users/getname/:id", to: "users#getname"
 
   resources :transactions
   resources :users

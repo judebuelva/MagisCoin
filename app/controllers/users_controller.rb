@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    # if current_user.user_type == "A" may bug
+    # puts User.find(:user_type)
+    # if session[:user_id] != nil
     @users = User.all
 
 
@@ -12,13 +13,19 @@ class UsersController < ApplicationController
         format.html
         format.json { render :json => @users }
       end
+    # else
+    #   respond_to do |format|
+    #       format.html
+    #       format.json { render :json => @users }
+    #     end
     # end
+
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    # current_user = User.find(params[:id])
+    current_user = User.find(params[:id])
     @data = {}
     @data["id"] = current_user.id
   if current_user.user_type == "A" || current_user.user_type == "C"
@@ -68,6 +75,9 @@ class UsersController < ApplicationController
   def purchase
   end
 
+  def withdrawal
+  end
+
   def showqr
   end
 
@@ -89,7 +99,7 @@ class UsersController < ApplicationController
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
-         format.html { redirect_to @user, notice: 'Customer was successfully created.' }
+         format.html { redirect_to @user, notice: 'Consumer was successfully created.' }
          format.json { render :show, status: :created, location: @user }
        else
          format.html { render :new }
@@ -150,7 +160,6 @@ class UsersController < ApplicationController
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
-
   end
 
   def buyload
@@ -167,18 +176,49 @@ class UsersController < ApplicationController
     @transaction.time_recorded = DateTime.now
     @transaction.save
     puts @user.errors
-    if @transaction.save
-       format.html { redirect_to @user, notice: 'Account Loaded!' }
-       format.json { render :show, status: :created, location: @user }
-     else
-       format.html { render :new }
-       format.json { render json: @user.errors, status: :unprocessable_entity }
+    redirect_to users_path
+    flash[:notice] = 'User Successfully Loaded!'
+    # if @transaction.save
+    #    format.html { redirect_to @user, notice: 'Account Loaded!' }
+    #    format.json { render :show, status: :created, location: @user }
+    #  else
+    #    format.html { render :new }
+    #    format.json { render json: @user.errors, status: :unprocessable_entity }
+    #  end
+  end
+
+  def withdraw
+    @user = User.find(params[:id])
+    if @user.balance.to_f >= params[:balance].to_f
+      prev_balance = @user.balance
+      @user.update( balance: prev_balance.to_f - params[:balance].to_f )
+
+      @transaction = Transaction.new()
+      @transaction.send_id = current_user.id
+      @transaction.recv_id = params[:id]
+      @transaction.card_id = nil
+      @transaction.purchase_type = "Withdrawal"
+      @transaction.amount = params[:balance].to_f
+      @transaction.time_recorded = DateTime.now
+      @transaction.save
+      puts @user.errors
+      redirect_to users_path
+      flash[:notice] = 'User Successfully Withdrawn!'
+    else
+      redirect_to with_draw_path
+      flash[:alert] = 'Insufficient Funds to Withdraw!'
+    # if @transaction.save
+    #    format.html { redirect_to @user, notice: 'Account Loaded!' }
+    #    format.json { render :show, status: :created, location: @user }
+    #  else
+    #    format.html { render :new }
+    #    format.json { render json: @user.errors, status: :unprocessable_entity }
      end
   end
 
   def payment
     @user = User.find(current_user.id)
-      if @user.balance.to_f > params[:balance].to_f
+      if @user.balance.to_f >= params[:balance].to_f
           send_prev = @user.balance
           @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
@@ -198,17 +238,19 @@ class UsersController < ApplicationController
           @transaction.time_recorded = DateTime.now
           @transaction.save
           puts @user.errors
-          if @transaction.save
-             format.html { redirect_to @user, notice: 'Load Sent!' }
-             format.json { render :show, status: :created, location: @user }
-           else
-             format.html { render :new }
-             format.json { render json: @user.errors, status: :unprocessable_entity }
-           end
+          redirect_to users_path
+          flash[:success] = 'Payment Successful!'
+          # if @transaction.save
+          #    format.html { redirect_to @user, notice: 'Load Sent!' }
+          #    format.json { render :show, status: :created, location: @user }
+          #  else
+          #    format.html { render :new }
+          #    format.json { render json: @user.errors, status: :unprocessable_entity }
+          #  end
       else
           redirect_to payment_path
-          flash[:error] = 'Insufficient Funds'
-          format.json { render json: "Insufficient Funds", status: :unprocessable_entity }
+          flash[:alert] = 'Insufficient Funds to Pay!'
+          # format.json { render json: "Insufficient Funds", status: :unprocessable_entity }
       end
   end
 
@@ -256,6 +298,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def getname
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.json{ render json: @user }
     end
   end
 

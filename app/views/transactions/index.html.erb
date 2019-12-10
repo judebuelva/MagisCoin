@@ -27,8 +27,24 @@
       <h4>Create a Transaction</h4><div class="btn-group" role="group">
           <%= link_to 'Buy Load', new_transaction_path, :class => 'btn btn-warning' %>
           <%= link_to 'Send Load', new_transaction_path, :class => 'btn btn-success' %>
+          </div>
+          <br>
+          <hr>
+          <br>
+            <div>
+              <%= form_tag transactions_path, :method => 'get' do %>
+              <%= text_field_tag :search, params[:search] %>
+              <select name="trans">
+                <option value="send_id">Sender</option>
+                <option value="recv_id">Receiver</option>
+                <option value="time_recorded">Time Recorded</option>
+              </select>
+              <%= submit_tag "Search", :class => 'btn btn-success'%>
+            </div>
+
       </div>
-      <% end%>
+      <% end %>
+      <% end %>
     <br><br>
 	<div class="row">
         <div class="table-responsive col-md-12">
@@ -58,11 +74,12 @@
                     <td><%= link_to '', edit_transaction_path(transaction), :class => 'btn btn-secondary glyphicon glyphicon-pencil'%></td>
                     <td><%= link_to '', transaction, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
                 </tr>
+              </tbody>
                 <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+                <tbody>
                 <tr>
-                    <td><% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
-                        <%= transaction.send_id %>
-                    </td>
+                  <% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
+                    <td><%= transaction.send_id %></td>
                     <td><%= transaction.recv_id %></td>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
@@ -73,6 +90,7 @@
                     <td><%= link_to '', transaction, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
                     <% end %>
                 </tr>
+                </tbody>
                 <% end %>
               <% end %>
             </tbody>

@@ -28,7 +28,9 @@
       <h4>Your QR details:</h4>
       <input type="text" id="valor" value=<%= current_user.id%> hidden>
       <button onClick="createQrCode()" class="btn btn-success fa" >Show your QR Code</button>
+      <br><br>
       <div id="qrcode"></div>
+      <br><br>
       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary fa fa-hand-o-left", :style => "color:white;" %>
     </center>
   </body>

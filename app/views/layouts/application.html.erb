@@ -47,6 +47,9 @@
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Reload Account', buy_load_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
                 </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                  <%= link_to 'Withdraw from Account', with_draw_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+                </li>
                 <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
                 <li class="nav-item mx-0 mx-lg-1">
                   <%= link_to 'Profile', current_user, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>

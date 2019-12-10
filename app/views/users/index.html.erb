@@ -22,7 +22,7 @@
 
 <body id="page-top">
 <% if current_user.try(:user_type) == "A" %>
-<p id="notice"><%= notice %></p>
+<div id="notice" align="center" class="alert alert-primary"><%= notice %></div>
 <div class="container">
     <h4>Create User</h4><div class="btn-group" role="group">
         <%= link_to 'Customer', new_customer_path, :class => 'btn btn-warning' %>

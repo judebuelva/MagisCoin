@@ -59,10 +59,8 @@
               <p><small>Balance</small></p>
               <%= link_to 'Edit Profile', edit_user_path(@user), :class => "btn btn-secondary btn-block fa fa-edit", :style => "color:white;" %>
               <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
-              <% if Qr.exists?(user_id: current_user.id) %>
+              <% if session[:user_id] != nil%>
                 <%= link_to 'Show QR', show_qr_path, :class => "btn btn-success btn-block fa", :style => "color:white;" %>
-              <% else %>
-                <%= link_to 'Generate QR', new_qr_path, :class => "btn btn-success btn-block fa", :style => "color:white;" %>
               <% end %>
           </div>
           <div id="qrcode"> </div>

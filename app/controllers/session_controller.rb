@@ -8,6 +8,7 @@ class SessionController < ApplicationController
   #  puts user
     if user && user.authenticate(params[:password_digest])
       session[:user_id] = user.id
+      # session[:user_type] = user.user_type
       redirect_to user
     else
       flash.now.alert = "Invalid contact number or password"
@@ -17,11 +18,12 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    # session[:user_type] = nil
     redirect_to users_path, :notice => "Logged out!"
   end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  
+
 end

@@ -43,7 +43,10 @@
                     </div>
 
                     <h4>QR content shown:</h4>
+                    <div id="merchant">
                     <%= text_field_tag (:id) %>
+                    <%= text_field_tag (:name), nil, placeholder: "Hover to see name"%>
+                    </div>
                   </div>
 
                   <div class="actions">
@@ -61,10 +64,10 @@
 <script type="text/javascript">
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     let result = scanner.scan();
+
     scanner.addListener('scan', function(content) {
-         alert('Is your account, ' + content + "?");
+         alert('Is your account number, ' + content + "?");
          document.getElementById("id").value = content;
-         document.getElementById("id").disabled = true;
          scanner.stop();
      });
 
@@ -73,5 +76,11 @@
         scanner.start(cameras[0]);
       }
 
+  });
+  $("#id").hover(function(){
+    $.getJSON("getname/" + document.getElementById("id").value + ".json", function( data ){
+      document.getElementById("name").value = data.f_name + " " + data.l_name;
+      document.getElementById("name").disabled = true;
+    });
   });
 </script>
