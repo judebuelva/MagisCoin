@@ -91,12 +91,14 @@
 <%= form_tag '/login', method: :post do |f|%>
   <p>
     <h4>Contact Number</h4>
-    <%= text_field_tag :contact_num, params[:contact_num] %>
+    <%= text_field_tag :contact_num, params[:contact_num], :maxlength => 11 %>
   </p>
   <p>
-    <h4>Pin Code</h4>
-    <%= password_field_tag :password_digest %>
+    <h4>PIN Code</h4>
+    <%= password_field_tag :password_digest, nil, :maxlength => 6 %><br>
+    <%= link_to 'Forgot PIN?' %>
   </p>
+
   <p class="button"><%= submit_tag "Log in" %></p>
 <% end %>
 </div>

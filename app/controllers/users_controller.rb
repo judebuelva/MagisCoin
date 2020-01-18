@@ -6,12 +6,32 @@ class UsersController < ApplicationController
   def index
     # puts User.find(:user_type)
     # if session[:user_id] != nil
-    @users = User.all
+    # @data = {}
+    # if current_user.user_type == "A" #doesn't work when logged out
+      @users = User.all
+    # else
+    #   @data["id"] = current_user.id
+    # if current_user.user_type == "A" || current_user.user_type == "C"
+    #   @data["f_name"] = current_user.f_name
+    #   @data["l_name"] = current_user.l_name
+    # elsif current_user.user_type == "A"
+    #   @data["user_type"] = current_user.user_type
+    # elsif current_user.user_type == "M"
+    #   @data["merchant_name"] = current_user.merchant_name
+    #   @data["owner_fname"] = current_user.owner_fname
+    #   @data["owner_lname"] = current_user.owner_lname
+    # end
+    #   @data["birthday"] = current_user.birthday
+    #   @data["email"] = current_user.email
+    #   @data["contact_num"] = current_user.contact_num
+    #   @data["address"] = current_user.address
+    #   @data["balance"] = current_user.balance
+    # end
 
 
     respond_to do |format|
         format.html
-        format.json { render :json => @users }
+        format.json { render :json => @data }
       end
     # else
     #   respond_to do |format|

@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   resources :buy_loads
   resources :session
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #
+  get '/404' , to: 'error#not_found'
+  get '/422' , to: 'error#unacceptable'
+  get '/500' , to: 'error#server_error'
 end

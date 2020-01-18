@@ -9,8 +9,8 @@ class TransactionsController < ApplicationController
       @transactions = Transaction.where(["time_recorded LIKE ?","%#{params[:search]}%"])
       # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
       # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
-    else
-    @transactions = Transaction.all
+    elsif current_user.user_type != "A"
+      @transactions = Transaction.where(send_id: current_user.id)
     # elsif current_user.user_type == "M" || current_user.user_type == "C"
     #   if Transaction.where(send_id: current_user.id)
     #     @transactions = Transaction.where(send_id: current_user.id)#.select(:send_id)# && Transaction.where(recv_id: current_user.id)
