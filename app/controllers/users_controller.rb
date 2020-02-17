@@ -207,13 +207,15 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
     print e
     # @js_response = ActiveSupport::JSON.encode(@user, @transaction)
-    # if @transaction.save
-    #    format.html { redirect_to @user, notice: 'Account Loaded!' }
-    #    format.json { render :show, status: :created, location: @user }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @user.errors, status: :unprocessable_entity }
-    #  end
+    respond_to do |format|
+      if @transaction.save
+         format.html { redirect_to @user, notice: 'Account Loaded!' }
+         format.json { render :show, status: :created, location: @user }
+       else
+         format.html { render :new }
+         format.json { render json: @user.errors, status: :unprocessable_entity }
+       end
+    end
   end
 
   def withdraw
@@ -230,16 +232,14 @@ class UsersController < ApplicationController
       @transaction.amount = params[:balance].to_f
       @transaction.time_recorded = DateTime.now
       # @transaction.save
-      if @transaction.save
-        respond_to do |format|
-         format.html { redirect_to @user, notice: 'Account Loaded!' }
-         format.json { render :show, status: :created, location: @user }
-        end
-       else
-         responds to do |format|
+      respond_to do |format|
+        if @transaction.save
+           format.html { redirect_to @user, notice: 'Withdrawn!' }
+           format.json { render :show, status: :created, location: @user }
+        else
            format.html { render :new }
            format.json { render json: @user.errors, status: :unprocessable_entity }
-         end
+        end
       end
       puts @user.errors
       # redirect_to users_path
@@ -271,17 +271,19 @@ class UsersController < ApplicationController
           @transaction.purchase_type = "Send Load"
           @transaction.amount = params[:balance].to_f
           @transaction.time_recorded = DateTime.now
-          @transaction.save
+          # @transaction.save
           puts @user.errors
           redirect_to users_path
           flash[:success] = 'Payment Successful!'
-          # if @transaction.save
-          #    format.html { redirect_to @user, notice: 'Load Sent!' }
-          #    format.json { render :show, status: :created, location: @user }
-          #  else
-          #    format.html { render :new }
-          #    format.json { render json: @user.errors, status: :unprocessable_entity }
-          #  end
+          respond_to do |format|
+            if @transaction.save
+               format.html { redirect_to @user, notice: 'Payment Sent!' }
+               format.json { render :show, status: :created, location: @user }
+             else
+               format.html { render :new }
+               format.json { render json: @user.errors, status: :unprocessable_entity }
+             end
+           end
       else
           redirect_to payment_path
           flash[:alert] = 'Insufficient Funds to Pay!'
