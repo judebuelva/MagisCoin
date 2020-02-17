@@ -44,13 +44,17 @@
                     <p><strong>First Name:</strong> <%= form.text_field :f_name %></p>
                     <p><strong>Last Name:</strong> <%= form.text_field :l_name %></p>
                     <p><strong>Role:</strong> <%= form.text_field :role %></p>
-                      <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
+                      <p><strong>Birthday: </strong> <%= form.date_select :birthday, :start_year => Date.current.year, :end_year => 1920 %></p>
                         <p><strong>Email: </strong> <%= form.text_field :email %> </p>
-                      <p><strong>Contact No. </strong> <%= form.number_field :contact_num %> </p>
+                      <p><strong>Contact No. </strong> <%= form.number_field :contact_num , :maxlength => 11%> </p>
                       <p><strong>Address: <%= form.text_field :address %></p>
+                        <h2><strong>Security Questions</strong></h2>
+                        <h4>Who is your favorite aunt?<%= form.text_field :question_1%></h4><br>
+                        <h4>What is the name of your first pet?<%= form.text_field :question_2%></h4><br>
+                        <h4>Who is your father?<%= form.text_field :question_3%></h4><br>
                   </div>
                   <div class="col-xs-12 col-sm-4 emphasis text-center divider">
-                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" %></strong></h2>
+                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" , :maxlength => 6%></strong></h2>
                       <p><small>6 Digit Pin Code</small></p>
                       <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
                       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>

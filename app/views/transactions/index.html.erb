@@ -61,10 +61,10 @@
             </thead>
             <tbody>
                 <% @transactions.each do |transaction| %>
-                <%# <% if current_user.try(:user_type) == "A" %>
+                <% if current_user.try(:user_type) == "A" %>
                 <tr>
-                    <td><%= transaction.send_id %></td>
-                    <td><%= transaction.recv_id %></td>
+                    <td id="sender" onload="loadSender()"><%= transaction.send_id %></td>
+                    <td id="receiver"><%= transaction.recv_id %></td>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
                     <td><%= transaction.amount %></td>
@@ -74,11 +74,11 @@
                     <td><%= link_to '', transaction, method: :delete, data: { confirm: 'Are you sure you would want to delete this?' }, :class => 'btn btn-primary glyphicon glyphicon-remove' %></td>
                 </tr>
               </tbody>
-                <%# <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
+                <% elsif current_user.try(:user_type) == "C" || current_user.try(:user_type) == "M" %>
                 <tbody>
                 <tr>
                   <% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
-                    <td><%= transaction.send_id %></td>
+                    <td onload="loadSender()"><%= transaction.send_id %></td>
                     <td><%= transaction.recv_id %></td>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
@@ -90,8 +90,8 @@
                     <% end %>
                 </tr>
                 </tbody>
-                <% end %>
-              <%# <% end %>
+                 <% end %>
+              <% end %>
             </tbody>
         </table>
       </div>
@@ -99,3 +99,33 @@
 </div>
 </body>
 </html>
+<script>
+  $("#sender").ready(function(){
+    $.getJSON("getname/" + document.getElementById("sender").value + ".json", function( data ){
+      if (data.f_name && data.l_name != null){
+        document.getElementById("sender").value = data.f_name + " " + data.l_name;
+      } else {
+        document.getElementById("sender").value = data.merchant_name;
+      }
+    });
+  });
+  $("#id").onload(function(){
+    $.getJSON("getname/" + document.getElementById("receiver").value + ".json", function( data ){
+      if (data.f_name && data.l_name != null){
+        document.getElementById("receiver").value = data.f_name + " " + data.l_name;
+      } else {
+        document.getElementById("receiver").value = data.merchant_name;
+      }
+    });
+  });
+
+  function loadSender(){
+    $.getJSON("getname/" + document.getElementById("sender").textContent + ".json", function( data ){
+      if (data.f_name && data.l_name != null){
+        document.getElementById("sender").innerText = data.f_name + " " + data.l_name;
+      } else {
+        document.getElementById("sender").innerHTML = data.merchant_name;
+      }
+    });
+  }
+</script>

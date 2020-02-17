@@ -10,15 +10,9 @@ class TransactionsController < ApplicationController
       # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
       # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
     elsif current_user.user_type != "A"
+      # @transactions = Transaction.joins(:user).where().first
+      # @transactions = Transaction.where(recv_id: current_user.id)
       @transactions = Transaction.where(send_id: current_user.id)
-    # elsif current_user.user_type == "M" || current_user.user_type == "C"
-    #   if Transaction.where(send_id: current_user.id)
-    #     @transactions = Transaction.where(send_id: current_user.id)#.select(:send_id)# && Transaction.where(recv_id: current_user.id)
-    #   elsif Transaction.where(recv_id: current_user.id)
-    #     @transactions = Transaction.where(recv_id: current_user.id)#.select(:recv_id)
-    #   end
-    # elsif Transaction.where(recv_id: current_user.id)
-    #   @transaction = Transaction.where(recv_id: current_user.id)
     end
     respond_to do |format|
       format.html

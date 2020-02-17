@@ -96,7 +96,7 @@
   <p>
     <h4>PIN Code</h4>
     <%= password_field_tag :password_digest, nil, :maxlength => 6 %><br>
-    <%= link_to 'Forgot PIN?' %>
+    <%= link_to 'Forgot PIN?', forget_pin_path %>
   </p>
 
   <p class="button"><%= submit_tag "Log in" %></p>

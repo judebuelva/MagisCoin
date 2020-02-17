@@ -13,9 +13,9 @@ class User < ApplicationRecord
 
     validates :email, format: {with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: "Please enter right format"}#/\A[\w+\-.]+@[a-z\d\-]+)*\.[a-z]+\z/i
   	validates :email,  presence: true, uniqueness: true
-  	validates :contact_num, presence: true
+  	validates :contact_num, presence: true#, length: {minimum: 10, maximum: 11}
   	validates :address, presence: true
   	validates :balance, presence: true, numericality: {greater_than_or_equal_to: 0}, numericality: {less_than_or_equal_to: 10000}
   	validates :user_type, presence: true
-    #validates :password_digest, presence: true, length: {minimum: 6, maximum: 6}
+    validates :password_digest, presence: true
 end

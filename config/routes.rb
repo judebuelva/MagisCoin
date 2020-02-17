@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     get "users/withdraw", to: "users#withdrawal", :as => "with_draw"
     post "users/withdraw", to: "users#withdraw"
 
+    get "users/confirmation", to: "users#confirmation_page", as: "confirmation_page"
+
+    get "users/forget_pin", to: "users#forget_pin", :as => "forget_pin"
+    post "users/forget_pin", to: "users#forget_pin"
+
     get "users/getname/:id", to: "users#getname"
 
   resources :transactions
@@ -39,7 +44,6 @@ Rails.application.routes.draw do
   resources :buy_loads
   resources :session
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  #
   get '/404' , to: 'error#not_found'
   get '/422' , to: 'error#unacceptable'
   get '/500' , to: 'error#server_error'

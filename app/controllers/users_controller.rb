@@ -5,13 +5,15 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     # puts User.find(:user_type)
-    # if session[:user_id] != nil
+    if session[:user_id] != nil
     # @data = {}
-    # if current_user.user_type == "A" #doesn't work when logged out
-      @users = User.all
+      if current_user.user_type == "A" #doesn't work when logged out
+        @users = User.all
+      end
     # else
-    #   @data["id"] = current_user.id
-    # if current_user.user_type == "A" || current_user.user_type == "C"
+      # @users = nil
+      # @data["id"] = current_user.id
+    # if current_user.user_type == "M" || current_user.user_type == "C"
     #   @data["f_name"] = current_user.f_name
     #   @data["l_name"] = current_user.l_name
     # elsif current_user.user_type == "A"
@@ -26,20 +28,17 @@ class UsersController < ApplicationController
     #   @data["contact_num"] = current_user.contact_num
     #   @data["address"] = current_user.address
     #   @data["balance"] = current_user.balance
-    # end
+    end
 
 
     respond_to do |format|
         format.html
-        format.json { render :json => @data }
-      end
-    # else
-    #   respond_to do |format|
-    #       format.html
-    #       format.json { render :json => @users }
-    #     end
-    # end
+        format.json { render :json => @users }
 
+        # if @users == nil
+        #   format.json { render :json => @data }
+        # end
+      end
   end
 
   # GET /users/1
@@ -63,6 +62,7 @@ class UsersController < ApplicationController
     @data["contact_num"] = current_user.contact_num
     @data["address"] = current_user.address
     @data["balance"] = current_user.balance
+    @data["password_digest"] = current_user.password_digest
     respond_to do |format|
         format.html
         format.json { render :json =>  @data}
@@ -95,9 +95,6 @@ class UsersController < ApplicationController
   def purchase
   end
 
-  def withdrawal
-  end
-
   def showqr
   end
 
@@ -105,7 +102,7 @@ class UsersController < ApplicationController
       @user = User.new
       @user.f_name = params[:user][:f_name].capitalize
       @user.l_name = params[:user][:l_name].capitalize
-      @user.birthday = params[:user][:birthday]
+      @user.birthday = nil #params[:user][:birthday]
       @user.role = nil
       @user.merchant_name = nil
       @user.owner_fname = nil
@@ -116,6 +113,9 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "C"
       @user.password = params[:user][:password_digest]
+      # @user.question_1 = params[:user][:password_digest]
+      # @user.question_2 = params[:user][:password_digest]
+      # @user.question_3 = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -132,7 +132,7 @@ class UsersController < ApplicationController
       @user = User.new
       @user.f_name = nil
       @user.l_name = nil
-      @user.birthday = nil
+      @user.birthday = nil #params[:user][:birthday]
       @user.role = nil
       @user.password = params[:user][:password_digest]
       @user.merchant_name = params[:user][:merchant_name].capitalize
@@ -143,6 +143,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "M"
+      # @user.question_1 = params[:user][:password_digest]
+      # @user.question_2 = params[:user][:password_digest]
+      # @user.question_3 = params[:user][:password_digest]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -171,6 +174,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "A"
+      # @user.question_1 = params[:user][:password_digest]
+      # @user.question_2 = params[:user][:password_digest]
+      # @user.question_3 = params[:user][:password_digest]
       respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'Admin was successfully created.' }
@@ -195,9 +201,12 @@ class UsersController < ApplicationController
     @transaction.amount = params[:balance].to_f
     @transaction.time_recorded = DateTime.now
     @transaction.save
-    puts @user.errors
+    puts @user.errors.full_messages
     redirect_to users_path
     flash[:notice] = 'User Successfully Loaded!'
+    rescue ActiveRecord::RecordNotFound => e
+    print e
+    # @js_response = ActiveSupport::JSON.encode(@user, @transaction)
     # if @transaction.save
     #    format.html { redirect_to @user, notice: 'Account Loaded!' }
     #    format.json { render :show, status: :created, location: @user }
@@ -220,19 +229,25 @@ class UsersController < ApplicationController
       @transaction.purchase_type = "Withdrawal"
       @transaction.amount = params[:balance].to_f
       @transaction.time_recorded = DateTime.now
-      @transaction.save
+      # @transaction.save
+      if @transaction.save
+        respond_to do |format|
+         format.html { redirect_to @user, notice: 'Account Loaded!' }
+         format.json { render :show, status: :created, location: @user }
+        end
+       else
+         responds to do |format|
+           format.html { render :new }
+           format.json { render json: @user.errors, status: :unprocessable_entity }
+         end
+      end
       puts @user.errors
-      redirect_to users_path
+      # redirect_to users_path
       flash[:notice] = 'User Successfully Withdrawn!'
     else
       redirect_to with_draw_path
       flash[:alert] = 'Insufficient Funds to Withdraw!'
-    # if @transaction.save
-    #    format.html { redirect_to @user, notice: 'Account Loaded!' }
-    #    format.json { render :show, status: :created, location: @user }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @user.errors, status: :unprocessable_entity }
+
      end
   end
 
@@ -277,6 +292,14 @@ class UsersController < ApplicationController
   def show_qr
     @user = User.find(current_user.id)
   end
+
+  def forget_pin
+    @user = User.find_by(params[:contact_num])
+    @user = User.find_by(params[:question_1])
+    @user = User.find_by(params[:question_2])
+    @user = User.find_by(params[:question_3])
+  end
+
   # GET /users/1/edit
   def edit
   end

@@ -21,6 +21,47 @@
   <link href="../../stylesheets/css/freelancer.min.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="instascan.min.js"></script>
+  <style>
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
 
 </head>
 
@@ -35,7 +76,7 @@
                   <div class="field">
                     <div class="field">
                       <h4>Input desired amount to be withdrawn:</h4>
-                      <h3><strong>PHP </strong></h3><%= text_field_tag (:balance)%>
+                      <h3><strong>PHP </strong></h3><%= text_field_tag (:balance), nil ,:required =>true%>
                     </div>
                     <div>
                       <h4>Scan your QR</h4>
@@ -43,15 +84,33 @@
                     </div>
 
                     <h4>QR content shown:</h4>
-                    <%= text_field_tag (:id) %>
-                    <%= text_field_tag (:name), nil, placeholder: "Hover to see name"%>
+                    <%= text_field_tag (:id), nil, :required => true%>
+                  <h4>Withdrawing from: </h4>  <%= text_field_tag (:name), nil, placeholder: "Hover to see name"%>
                   </div>
 
                   <div class="actions">
-                      <%= submit_tag "Withdraw from User", data:{:confirm => 'Are you sure to withdraw from this account?'}, class: "btn btn-primary btn-block" %>
-                      <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
+                  <!-- The Modal -->
+                  <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <h2>Confirm Transaction</h2>
+                      <h4>Amount being transacted:</h4>
+                      <h3><strong>PHP </strong></h3>
+                      <%= text_field_tag (:conAmount), nil%><br>
+
+                      <h4>Transacted to:</h4>
+                      <%= text_field_tag (:conName), nil%><br>
+                      <%= submit_tag("Withdraw",  data:{:confirm => 'Are you sure on this purchase?'}, class: "btn btn-primary btn-block")%>
+                      <%= link_to ' Go Back', with_draw_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
+                    </div>
+
                   </div>
+                </div>
                   </form>
+                  <button id="confirm" class ="btn btn-primary btn-block">Confirm Withrawal</button>
+                  <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
               </div>
          </div>
 		</div>
@@ -73,11 +132,50 @@
         scanner.start(cameras[0]);
       }
   });
-  
+
   $("#id").hover(function(){
     $.getJSON("getname/" + document.getElementById("id").value + ".json", function( data ){
-      document.getElementById("name").value = data.f_name + " " + data.l_name;
-      document.getElementById("name").disabled = true;
+      if (data.f_name && data.l_name != null){
+        document.getElementById("name").value = data.f_name + " " + data.l_name;
+        document.getElementById("conName").value = data.f_name + " " + data.l_name;
+        document.getElementById("conName").disabled = true;
+        document.getElementById("name").disabled = true;
+      } else {
+        document.getElementById("name").value = data.merchant_name;
+        document.getElementById("conName").value = data.merchant_name;
+        document.getElementById("conName").disabled = true;
+        document.getElementById("name").disabled = true;
+      }
     });
   });
+
+
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("confirm");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+    var bal = document.getElementById("balance").value;
+    document.getElementById("conAmount").value = bal;
+    document.getElementById("conAmount").disabled = true;
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 </script>

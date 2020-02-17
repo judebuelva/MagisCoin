@@ -21,7 +21,17 @@
 </head>
 
 <body id="page-top">
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p id="notice"><%= notice %></p>
 <%= form_for(@user, :url=>{:action => 'create_merchant'}) do |form| %>
   <% if @user.errors.any? %>
@@ -46,13 +56,17 @@
                       <p><strong>Owner First Name:</strong> <%= form.text_field :owner_fname %></p>
                       <p><strong>Owner Last Name:</strong> <%= form.text_field :owner_lname %></p>
                       </select></p>
-                      <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
+                      <p><strong>Birthday: </strong> <%= form.date_select :birthday, :start_year => Date.current.year, :end_year => 1920%></p>
                       <p><strong>Email: </strong> <%= form.text_field :email %> </p>
                       <p><strong>Contact No. </strong> <%= form.number_field :contact_num %> </p>
                       <p><strong>Address: <%= form.text_field :address %></p>
+                        <h2><strong>Security Questions</strong></h2>
+                        <h4>Who is your favorite aunt?<%= form.text_field :question_1%></h4><br>
+                        <h4>What is the name of your first pet?<%= form.text_field :question_2%></h4><br>
+                        <h4>Who is your father?<%= form.text_field :question_3%></h4><br>
                   </div>
                   <div class="col-xs-12 col-sm-4 emphasis text-center divider">
-                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" %></strong></h2>
+                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" , :maxlength => 6%></strong></h2>
                       <p><small>6 Digit Pin Code</small></p>
                       <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
                       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
@@ -62,6 +76,5 @@
   		</div>
   	</div>
   </div>
-
 </body>
 </html>
