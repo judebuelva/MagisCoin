@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  # before_action :set_num, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -113,9 +113,9 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "C"
       @user.password = params[:user][:password_digest]
-      # @user.question_1 = params[:user][:password_digest]
-      # @user.question_2 = params[:user][:password_digest]
-      # @user.question_3 = params[:user][:password_digest]
+      @user.question_1 = params[:user][:question_1]
+      @user.question_2 = params[:user][:question_2]
+      @user.question_3 = params[:user][:question_3]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -143,9 +143,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "M"
-      # @user.question_1 = params[:user][:password_digest]
-      # @user.question_2 = params[:user][:password_digest]
-      # @user.question_3 = params[:user][:password_digest]
+      @user.question_1 = params[:user][:question_1]
+      @user.question_2 = params[:user][:question_2]
+      @user.question_3 = params[:user][:question_3]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -174,9 +174,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "A"
-      # @user.question_1 = params[:user][:password_digest]
-      # @user.question_2 = params[:user][:password_digest]
-      # @user.question_3 = params[:user][:password_digest]
+      @user.question_1 = params[:user][:question_1]
+      @user.question_2 = params[:user][:question_2]
+      @user.question_3 = params[:user][:question_3]
       respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'Admin was successfully created.' }
@@ -234,7 +234,7 @@ class UsersController < ApplicationController
       # @transaction.save
       respond_to do |format|
         if @transaction.save
-           format.html { redirect_to @user, notice: 'Withdrawn!' }
+           format.html { redirect_to users_path, notice: 'Withdrawn!' }
            format.json { render :show, status: :created, location: @user }
         else
            format.html { render :new }
@@ -273,11 +273,11 @@ class UsersController < ApplicationController
           @transaction.time_recorded = DateTime.now
           # @transaction.save
           puts @user.errors
-          redirect_to users_path
+          # redirect_to users_path
           flash[:success] = 'Payment Successful!'
           respond_to do |format|
             if @transaction.save
-               format.html { redirect_to @user, notice: 'Payment Sent!' }
+               format.html { redirect_to users_path, notice: 'Payment Sent!' }
                format.json { render :show, status: :created, location: @user }
              else
                format.html { render :new }
@@ -296,10 +296,12 @@ class UsersController < ApplicationController
   end
 
   def forget_pin
-    @user = User.find_by(params[:contact_num])
+    @user = User.find_by(contact_num: params[:contact_num])
     @user = User.find_by(params[:question_1])
     @user = User.find_by(params[:question_2])
     @user = User.find_by(params[:question_3])
+
+    @user.update(password: params[:password_digest])
   end
 
   # GET /users/1/edit
@@ -358,6 +360,10 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+    # def set_num
+    #   @user = User.find_by(params[:contact_num])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

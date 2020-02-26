@@ -4,19 +4,18 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    if current_user.user_type == "A"
       @transactions = Transaction.all
       @transactions = Transaction.where(["time_recorded LIKE ?","%#{params[:search]}%"])
       # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
       # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
-    elsif current_user.user_type != "A"
-      # @transactions = Transaction.joins(:user).where().first
-      # @transactions = Transaction.where(recv_id: current_user.id)
-      @transactions = Transaction.where(send_id: current_user.id)
-    end
     respond_to do |format|
       format.html
       format.json {render :json => @transactions}
+      format.pdf do
+         pdf = TransactionPdf.new(@transactions)
+         send_data pdf.render, filename: "transactions.pdf", type: "application/pdf", disposition: "inline"
+
+      end
     end
   end
 

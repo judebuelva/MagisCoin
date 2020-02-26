@@ -68,3 +68,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
 
 gem 'jquery-rails'
+
+gem 'pdfkit'
+
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'
+
+gem 'render_anywhere'
+
+gem 'prawn'
+
+gem 'prawn-table'

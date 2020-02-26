@@ -26,4 +26,17 @@ class SessionController < ApplicationController
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def forget_pin
+    user = User.find_by(contact_num: params[:contact_num])
+    # user = User.find_by(params[:question_1])
+    # user = User.find_by(params[:question_2])
+    # user = User.find_by(params[:question_3])
+    if user && (user.find_by(params[:question_1]).valid? && user.find_by(params[:question_2]).valid? && user.find_by(params[:question_3]).valid?)
+      session[:user_id] = user.id
+      user.update(password: params[:password_digest])
+    end
+
+
+  end
+
 end

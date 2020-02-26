@@ -41,7 +41,9 @@
               </select> -->
               <%= submit_tag "Search", :class => 'btn btn-success'%>
             </div>
-      </div>
+            <div>
+              <p><%= link_to "Generate PDF", transactions_path(@transaction, :class => 'btn btn-secondary', format: "pdf") %>
+            </div>
       <% end %>
       <% end %>
     <br><br>
@@ -63,7 +65,7 @@
                 <% @transactions.each do |transaction| %>
                 <% if current_user.try(:user_type) == "A" %>
                 <tr>
-                    <td id="sender" onload="loadSender()"><%= transaction.send_id %></td>
+                    <td id="sender"><%= User.find(transaction.send_id).f_name %></td>
                     <td id="receiver"><%= transaction.recv_id %></td>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
@@ -78,8 +80,8 @@
                 <tbody>
                 <tr>
                   <% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
-                    <td onload="loadSender()"><%= transaction.send_id %></td>
-                    <td><%= transaction.recv_id %></td>
+                    <td id="sender"><%= transaction.send_id %></td>
+                    <td id="receiver"><%= transaction.recv_id %></td>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
                     <td><%= transaction.amount %></td>
@@ -100,32 +102,34 @@
 </body>
 </html>
 <script>
-  $("#sender").ready(function(){
-    $.getJSON("getname/" + document.getElementById("sender").value + ".json", function( data ){
+  $("#sender").onload(function(){
+    $.getJSON("getname/" + document.getElementById("sender[0]").value + ".json", function( data ){
       if (data.f_name && data.l_name != null){
-        document.getElementById("sender").value = data.f_name + " " + data.l_name;
+        document.getElementById("sender[0]").value = data.f_name + " " + data.l_name;
       } else {
-        document.getElementById("sender").value = data.merchant_name;
+        document.getElementById("sender[0]").value = data.merchant_name;
       }
     });
   });
-  $("#id").onload(function(){
-    $.getJSON("getname/" + document.getElementById("receiver").value + ".json", function( data ){
+  $("#receiver").onload(function(){
+    $.getJSON("getname/" + document.getElementById("receiver[0]").value + ".json", function( data ){
       if (data.f_name && data.l_name != null){
-        document.getElementById("receiver").value = data.f_name + " " + data.l_name;
+        document.getElementById("receiver[0]").value = data.f_name + " " + data.l_name;
       } else {
-        document.getElementById("receiver").value = data.merchant_name;
+        document.getElementById("receiver[0]").value = data.merchant_name;
       }
     });
   });
 
-  function loadSender(){
-    $.getJSON("getname/" + document.getElementById("sender").textContent + ".json", function( data ){
-      if (data.f_name && data.l_name != null){
-        document.getElementById("sender").innerText = data.f_name + " " + data.l_name;
-      } else {
-        document.getElementById("sender").innerHTML = data.merchant_name;
-      }
-    });
-  }
+  // function loadSender(){
+  //   $.getJSON("getname/" + document.getElementById("sender").textContent + ".json", function( data ){
+  //     if (data.f_name && data.l_name != null){
+  //       document.getElementById("sender").innerText = data.f_name + " " + data.l_name;
+  //     } else {
+  //       document.getElementById("sender").innerHTML = data.merchant_name;
+  //     }
+  //   });
+  // }
+  // var sender = document.getElementById("sender").getElementByTagName("td");
+
 </script>

@@ -41,14 +41,14 @@
                   <h2>Forget PIN confirmation</h2>
                   <div class="col-xs-12 col-sm-8">
                       <p class="text center" id="notice"><%= notice %></p>
-                      <p><strong>Contact No. </strong> <%= form.number_field :contact_num , :maxlength => 11%> </p>
+                      <p><strong>Contact No. </strong> <%= form.text_field :contact_num , :maxlength => 11%> </p>
                         <h2><strong>Security Questions</strong></h2>
                         <h4>Who is your favorite aunt?<%= form.text_field :question_1%></h4><br>
                         <h4>What is the name of your first pet?<%= form.text_field :question_2%></h4><br>
                         <h4>Who is your father?<%= form.text_field :question_3%></h4><br>
                   </div>
                   <div class="col-xs-12 col-sm-4 emphasis text-center divider">
-                      <h2><strong> NEW PIN <%= form.password_field :password_digest, :size=>"5px" , :maxlength => 6%></strong></h2>
+                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" , :maxlength => 6%></strong></h2>
                       <p><small>6 Digit Pin Code</small></p>
                       <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
                       <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>

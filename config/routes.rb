@@ -29,10 +29,15 @@ Rails.application.routes.draw do
 
     get "users/confirmation", to: "users#confirmation_page", as: "confirmation_page"
 
-    get "users/forget_pin", to: "users#forget_pin", :as => "forget_pin"
+    get "users/forget_pin", to: "users#forget_pin", as: "forget_pin"
     post "users/forget_pin", to: "users#forget_pin"
 
     get "users/getname/:id", to: "users#getname"
+
+    get "/mlogin", to: "mobile_login#login"
+    get "/mcreate_customer", to: "mobile_login#mcreate_customer"
+    get "/mpayment", to: "mobile_login#mpayment"
+    get "/mtransactions", to: "mobile_login#mtransactions"
 
   resources :transactions
   resources :users
