@@ -21,7 +21,7 @@ class MobileLoginController < ApplicationController
     @user = User.user_type
     @user = User.balance
 
-    render json:{ @user }
+    render json:{ "Profile" => @user }
   end
 
   def mcreate_customer
@@ -75,12 +75,12 @@ class MobileLoginController < ApplicationController
           # redirect_to users_path
           flash[:success] = 'Payment Successful!'
             if @transaction.save
-               render.json { "Transaction" => "Created Successfully" }
+               render json: { "Transaction" => "Created Successfully" }
              else
-              render.json { "Error" => "Invalid Transaction" }
+              render json: { "Error" => "Invalid Transaction" }
             end
         else
-            render.json {"Error" => "Insufficient Funds to Pay!"}
+            render json: {"Error" => "Insufficient Funds to Pay!"}
             # format.json { render json: "Insufficient Funds", status: :unprocessable_entity }
         end
     end
@@ -88,7 +88,7 @@ class MobileLoginController < ApplicationController
     def mtransactions
       @transaction = Transaction.all
 
-      render.json{ @transaction }
+      render json:{ "Transaction => "@transaction }
     end
 
     def mlogout

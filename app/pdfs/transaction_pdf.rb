@@ -3,7 +3,7 @@ class TransactionPDF <  Prawn::Document
    def initialize(transaction)
 
      super(top_margin: 50)
-     @transaction = transaction
+     @transactions = transaction
 
      text "MagisCoin \n\n", size: 25, style: :bold, align: :center
 
