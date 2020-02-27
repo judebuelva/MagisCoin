@@ -17,6 +17,8 @@ class MobileLoginController < ApplicationController
     @user = User.balance
     @user = User.f_name
     @user = User.l_name
+
+    render json:{ @user }
   end
 
   def mcreate_customer
@@ -43,9 +45,6 @@ class MobileLoginController < ApplicationController
        else
          render json: {"error" => "Invalid"}
        end
-  # respond_to do |format|
-  #      format.json { render json: @user.errors, status: :unprocessable_entity }
-  #  end
   end
 
   def mpayment
