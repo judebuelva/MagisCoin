@@ -65,8 +65,16 @@
                 <% @transactions.each do |transaction| %>
                 <% if current_user.try(:user_type) == "A" %>
                 <tr>
-                    <td id="sender"><%= User.find(transaction.send_id).f_name %></td>
-                    <td id="receiver"><%= transaction.recv_id %></td>
+                  <% if User.find(transaction.send_id).f_name == nil %>
+                    <td><%= User.find(transaction.send_id).merchant_name %></td>
+                  <% else %>
+                    <td><%= User.find(transaction.send_id).f_name %></td>
+                  <% end %>
+                    <% if User.find(transaction.recv_id).f_name == nil %>
+                      <td><%= User.find(transaction.recv_id).merchant_name %></td>
+                    <% else %>
+                      <td><%= User.find(transaction.recv_id).f_name %></td>
+                    <% end %>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
                     <td><%= transaction.amount %></td>
@@ -80,8 +88,12 @@
                 <tbody>
                 <tr>
                   <% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
-                    <td id="sender"><%= transaction.send_id %></td>
-                    <td id="receiver"><%= transaction.recv_id %></td>
+                    <td><%= User.find(transaction.send_id).merchant_name %></td>
+                    <% if User.find(transaction.recv_id).f_name == nil %>
+                      <td><%= User.find(transaction.recv_id).merchant_name %></td>
+                    <% else %>
+                      <td><%= User.find(transaction.recv_id).f_name %></td>
+                    <% end %>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
                     <td><%= transaction.amount %></td>

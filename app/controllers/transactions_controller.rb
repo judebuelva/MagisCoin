@@ -4,10 +4,10 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-      @transactions = Transaction.all
-      @transactions = Transaction.where(["time_recorded LIKE ?","%#{params[:search]}%"])
-      # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
-      # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
+    @transactions = Transaction.all
+    @transactions = Transaction.where(["time_recorded LIKE ?","%#{params[:search]}%"])
+    # @transactions = Transaction.where(["send_id LIKE ?","%#{params[:search]}%"])
+    # @transactions = Transaction.where(["recv_id LIKE ?","%#{params[:search]}%"])
     respond_to do |format|
       format.html
       format.json {render :json => @transactions}

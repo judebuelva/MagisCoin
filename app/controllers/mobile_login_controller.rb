@@ -11,6 +11,14 @@ class MobileLoginController < ApplicationController
     end
   end
 
+  def mprofile
+    @user = User.find(user.id)
+
+    @user = User.balance
+    @user = User.f_name
+    @user = User.l_name
+  end
+
   def mcreate_customer
       @user = User.new
       @user.f_name = params[:f_name]
@@ -76,9 +84,9 @@ class MobileLoginController < ApplicationController
     end
 
     def mtransactions
-      if @transaction.send_id && @transaction.recv_id == user.id
-        
-      end
+      @transaction = Transaction.all
+
+      render.json{ @transaction }
     end
 
     def mlogout

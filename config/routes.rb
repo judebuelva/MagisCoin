@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get "/mcreate_customer", to: "mobile_login#mcreate_customer"
     get "/mpayment", to: "mobile_login#mpayment"
     get "/mtransactions", to: "mobile_login#mtransactions"
+    get "/mlogout", to: "mobile_login#mlogout"
 
   resources :transactions
   resources :users
