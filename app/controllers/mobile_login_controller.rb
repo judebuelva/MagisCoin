@@ -14,9 +14,12 @@ class MobileLoginController < ApplicationController
   def mprofile
     @user = User.find(user.id)
 
-    @user = User.balance
     @user = User.f_name
     @user = User.l_name
+    @user = User.birthday
+    @user = User.contact_num
+    @user = User.user_type
+    @user = User.balance
 
     render json:{ @user }
   end
