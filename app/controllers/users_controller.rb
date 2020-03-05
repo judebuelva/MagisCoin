@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :set_num, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -113,9 +112,9 @@ class UsersController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "C"
       @user.password = params[:user][:password_digest]
-      @user.question_1 = params[:user][:question_1]
-      @user.question_2 = params[:user][:question_2]
-      @user.question_3 = params[:user][:question_3]
+      @user.question_1 = Digest::SHA1.hexdigest params[:user][:question_1]
+      @user.question_2 = Digest::SHA1.hexdigest params[:user][:question_2]
+      @user.question_3 = Digest::SHA1.hexdigest params[:user][:question_3]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -143,9 +142,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "M"
-      @user.question_1 = params[:user][:question_1]
-      @user.question_2 = params[:user][:question_2]
-      @user.question_3 = params[:user][:question_3]
+      @user.question_1 = Digest::SHA1.hexdigest params[:user][:question_1]
+      @user.question_2 = Digest::SHA1.hexdigest params[:user][:question_2]
+      @user.question_3 = Digest::SHA1.hexdigest params[:user][:question_3]
       #all fields that should be null (nil) or 0
      respond_to do |format|
        if @user.save
@@ -174,9 +173,9 @@ class UsersController < ApplicationController
       @user.address = params[:user][:address]
       @user.balance = 0.0
       @user.user_type = "A"
-      @user.question_1 = params[:user][:question_1]
-      @user.question_2 = params[:user][:question_2]
-      @user.question_3 = params[:user][:question_3]
+      @user.question_1 = Digest::SHA1.hexdigest params[:user][:question_1]
+      @user.question_2 = Digest::SHA1.hexdigest params[:user][:question_2]
+      @user.question_3 = Digest::SHA1.hexdigest params[:user][:question_3]
       respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'Admin was successfully created.' }
@@ -297,15 +296,18 @@ class UsersController < ApplicationController
 
   def forget_pin
     @user = User.find_by(contact_num: params[:contact_num])
-    @user = User.find_by(params[:question_1])
-    @user = User.find_by(params[:question_2])
-    @user = User.find_by(params[:question_3])
-
-    @user.update(password: params[:password_digest])
+    q1 = Digest::SHA1.hexdigest params[:question_1].to_s
+    q2 = Digest::SHA1.hexdigest params[:question_2].to_s
+    q3 = Digest::SHA1.hexdigest params[:question_3].to_s
+    if @user && q1 && q2 && q3
+      @user.update(password: params[:password_digest])
+      redirect_to login_path
+    end
   end
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
@@ -342,6 +344,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
+    @transaction = Transaction.where(send_id: params[:id]) || Transaction.where(recv_id: params[:id])
+    @transaction.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }

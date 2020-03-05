@@ -11,19 +11,6 @@ class MobileLoginController < ApplicationController
     end
   end
 
-  def mprofile
-    @user = User.find(user.id)
-
-    @user = User.f_name
-    @user = User.l_name
-    @user = User.birthday
-    @user = User.contact_num
-    @user = User.user_type
-    @user = User.balance
-
-    render json:{ "Profile" => @user }
-  end
-
   def mcreate_customer
       @user = User.new
       @user.f_name = params[:f_name]
@@ -39,9 +26,9 @@ class MobileLoginController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "C"
       @user.password = params[:password_digest]
-      # @user.question_1 = params[:user][:question_1]
-      # @user.question_2 = params[:user][:question_2]
-      # @user.question_3 = params[:user][:question_3]
+      @user.question_1 = params[:user][:question_1]
+      @user.question_2 = params[:user][:question_2]
+      @user.question_3 = params[:user][:question_3]
       #all fields that should be null (nil) or 0
        if @user.save
          render json: {"Registration" => "Created Successfully"}
@@ -51,21 +38,21 @@ class MobileLoginController < ApplicationController
   end
 
   def mpayment
-    @user = User.find(user.id)
+    @user = User.find(params[:send_id])
       if @user.balance.to_f >= params[:balance].to_f
           send_prev = @user.balance
           @user.update( balance: send_prev.to_f - params[:balance].to_f )
 
           @user = 0
 
-          @user = User.find(params[:id])
+          @user = User.find(params[:recv_id])
           recv_prev = @user.balance
           @user.update( balance: recv_prev.to_f + params[:balance].to_f )
           puts @user.errors.full_messages
 
           @transaction = Transaction.new()
-          @transaction.send_id = user.id
-          @transaction.recv_id = params[:id]
+          @transaction.send_id = params[:send_id]
+          @transaction.recv_id = params[:recv_id]
           @transaction.card_id = nil
           @transaction.purchase_type = "Send Load"
           @transaction.amount = params[:balance].to_f
@@ -86,9 +73,8 @@ class MobileLoginController < ApplicationController
     end
 
     def mtransactions
-      @transaction = Transaction.all
-
-      render json:{ "Transaction => "@transaction }
+      @transaction = Transaction.where(send_id: params[:id]) || Transaction.where(recv_id: params[:id])
+      render json:{ "Transaction" => @transaction }
     end
 
     def mlogout

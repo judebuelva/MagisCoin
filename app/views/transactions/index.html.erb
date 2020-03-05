@@ -33,16 +33,11 @@
           <br>
             <div>
               <%= form_tag transactions_path, :method => 'get' do %>
-              <%= text_field_tag :search, params[:search] %>
-              <!-- <select id="trans">
-                <option value="send_id">Sender</option>
-                <option value="recv_id">Receiver</option>
-                <option value="time_recorded">Time Recorded</option>
-              </select> -->
+              <%= text_field_tag :search, params[:search], placeholder: "Input Date" %>
               <%= submit_tag "Search", :class => 'btn btn-success'%>
             </div>
             <div>
-              <p><%= link_to "Generate PDF", transactions_path(@transaction, :class => 'btn btn-secondary', format: "pdf") %>
+              <p><%= link_to "Generate PDF", transactions_path(@transactions, :class => 'btn btn-secondary', format: "pdf") %></p>
             </div>
       <% end %>
       <% end %>
@@ -68,12 +63,12 @@
                   <% if User.find(transaction.send_id).f_name == nil %>
                     <td><%= User.find(transaction.send_id).merchant_name %></td>
                   <% else %>
-                    <td><%= User.find(transaction.send_id).f_name %></td>
+                    <td><%= User.find(transaction.send_id).f_name + " " +  User.find(transaction.send_id).l_name  %></td>
                   <% end %>
                     <% if User.find(transaction.recv_id).f_name == nil %>
                       <td><%= User.find(transaction.recv_id).merchant_name %></td>
                     <% else %>
-                      <td><%= User.find(transaction.recv_id).f_name %></td>
+                      <td><%= User.find(transaction.recv_id).f_name + " " +  User.find(transaction.recv_id).l_name %></td>
                     <% end %>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>
@@ -88,11 +83,15 @@
                 <tbody>
                 <tr>
                   <% if transaction.send_id == current_user.id || transaction.recv_id == current_user.id%>
+                  <% if User.find(transaction.send_id).f_name == nil %>
                     <td><%= User.find(transaction.send_id).merchant_name %></td>
+                  <% else %>
+                    <td><%= User.find(transaction.send_id).f_name + " " + User.find(transaction.send_id).l_name %></td>
+                  <% end %>
                     <% if User.find(transaction.recv_id).f_name == nil %>
                       <td><%= User.find(transaction.recv_id).merchant_name %></td>
                     <% else %>
-                      <td><%= User.find(transaction.recv_id).f_name %></td>
+                      <td><%= User.find(transaction.recv_id).f_name + " " + User.find(transaction.recv_id).l_name %></td>
                     <% end %>
                     <td><%= transaction.card_id %></td>
                     <td><%= transaction.purchase_type %></td>

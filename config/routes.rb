@@ -3,8 +3,10 @@ Rails.application.routes.draw do
     get 'users/showqr' => 'users#showqr', :as => "show_qr"
     post 'users/showqr' => 'users#show_qr'
 
+    get "users/forget_pin", to: "users#forget_pin", as: "forget_pin"
+    post "users/forget_pin", to: "users#forget_pin"
 
-    get '/login' => 'session#new'
+    get '/login' => 'session#new', :as => "login"
     post '/login' => 'session#create'
     get 'logout' => 'session#destroy'
     get "sign_up" => "users#new_customer", :as => "sign_up"
@@ -29,8 +31,6 @@ Rails.application.routes.draw do
 
     get "users/confirmation", to: "users#confirmation_page", as: "confirmation_page"
 
-    get "users/forget_pin", to: "users#forget_pin", as: "forget_pin"
-    post "users/forget_pin", to: "users#forget_pin"
 
     get "users/getname/:id", to: "users#getname"
 
@@ -39,6 +39,9 @@ Rails.application.routes.draw do
     get "/mpayment", to: "mobile_login#mpayment"
     get "/mtransactions", to: "mobile_login#mtransactions"
     get "/mlogout", to: "mobile_login#mlogout"
+
+    get "/nfclogin", to: "nfc#login"
+    get "/nfcpayment", to: "nfc#nfcpayment"
 
   resources :transactions
   resources :users

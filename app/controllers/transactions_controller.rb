@@ -14,8 +14,7 @@ class TransactionsController < ApplicationController
       format.pdf do
          pdf = TransactionPdf.new(@transactions)
          send_data pdf.render, filename: "transactions.pdf", type: "application/pdf", disposition: "inline"
-
-      end
+       end
     end
   end
 

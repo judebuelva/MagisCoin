@@ -21,43 +21,40 @@
 </head>
 
 <body id="page-top">
-<p id="notice"><%= notice %></p>
-<%= form_for(@user, :url=>{:action => 'forget_pin'}) do |form| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="container">
+      <p id="notice"><%= notice %></p>
   	<div class="row">
+
   		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-              <div class="col-sm-12">
-                  <h2>Forget PIN confirmation</h2>
-                  <div class="col-xs-12 col-sm-8">
-                      <p class="text center" id="notice"><%= notice %></p>
-                      <p><strong>Contact No. </strong> <%= form.text_field :contact_num , :maxlength => 11%> </p>
-                        <h2><strong>Security Questions</strong></h2>
-                        <h4>Who is your favorite aunt?<%= form.text_field :question_1%></h4><br>
-                        <h4>What is the name of your first pet?<%= form.text_field :question_2%></h4><br>
-                        <h4>Who is your father?<%= form.text_field :question_3%></h4><br>
+          <div class="col-sm-12">
+              <h2>Forget PIN confirmation</h2>
+              <div class="col-xs-12 col-sm-8">
+                  <%= form_tag('/users/forget_pin')%>
+                  <div class="field">
+                  <h3><strong>Enter your contact number: </strong></h3>
+                    <%= text_field_tag :contact_num, nil ,:required =>true %>
                   </div>
-                  <div class="col-xs-12 col-sm-4 emphasis text-center divider">
-                      <h2><strong>PIN <%= form.password_field :password_digest, :size=>"5px" , :maxlength => 6%></strong></h2>
-                      <p><small>6 Digit Pin Code</small></p>
-                      <%= form.submit class: "btn btn-success btn-block", style: "color:white;"  %>
-                      <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block fa fa-hand-o-left", :style => "color:white;" %>
-                  </div>
-                  <%end%>
+                    <div class="actions">
+                      <div class="field">
+                        <h4>Security Questions</h4>
+                        <h4>Who is your favorite aunt?<%= text_field_tag (:question_1), nil ,:required => true%></h4><br>
+                        <h4>What is the name of your first pet?<%= text_field_tag (:question_2), nil ,:required => true%></h4><br>
+                        <h4>Who is your father?<%=text_field_tag (:question_3), nil ,:required => true%></h4><br>
+                      </div>
+
+                          <h2>NEW PIN <%=password_field_tag (:password_digest), nil ,:required => true, :maxlength => 6%></h2><br>
+                          <%= submit_tag("Change PIN", class: "btn btn-primary btn-block")%>
+                          <%= link_to ' Go Back', users_path, :class => "btn btn-secondary btn-block", :style => "color:white;" %>
+                      </div>
+
+                      </div>
+                    </div>
+                </form>
+            </div>
+
       	 </div>
   		</div>
   	</div>
   </div>
-
 </body>
 </html>

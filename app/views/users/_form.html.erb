@@ -45,9 +45,9 @@
                         <option value="C">Customer</option>
                         <option value="M">Merchant</option>
                     </select></p> -->
-                    <p><strong>Birthday: </strong> <%= form.date_select :birthday %></p>
+                    <p><strong>Birthday: </strong> <%= form.date_select :birthday, :start_year => Date.current.year, :end_year => 1920 %></p>
                     <p><strong>Email: </strong> <%= form.text_field :email %> </p>
-                    <p><strong>Contact No. </strong> <%= form.number_field :contact_num , :maxlength => 11%> </p>
+                    <p><strong>Contact No. </strong> <%= form.number_field :contact_num, :maxlength => 11%> </p>
                     <p><strong>Address: <%= form.text_field :address %></p>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis text-center divider">

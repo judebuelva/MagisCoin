@@ -86,12 +86,12 @@
 <h1>Welcome to MagisCoin, <%= current_user.owner_fname %>!</h1>
 </div>
 <% else %>
-<div class="container">
-    <h1>Login</h1>
+<div class="container text-center">
+    <h1>Login</h1><br>
 <%= form_tag '/login', method: :post do |f|%>
   <p>
     <h4>Contact Number</h4>
-    <%= text_field_tag :contact_num, params[:contact_num], :maxlength => 11 %>
+    <%= text_field_tag :contact_num, params[:contact_num], :maxlength => 11%>
   </p>
   <p>
     <h4>PIN Code</h4>
@@ -99,7 +99,7 @@
     <%= link_to 'Forgot PIN?', forget_pin_path %>
   </p>
 
-  <p class="button"><%= submit_tag "Log in" %></p>
+  <p class="btn btn-success"><%= submit_tag "Log in" , :class => 'btn btn-success'%></p>
 <% end %>
 </form>
 </div>
