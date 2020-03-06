@@ -15,7 +15,7 @@ class MobileLoginController < ApplicationController
       @user = User.new
       @user.f_name = params[:f_name]
       @user.l_name = params[:l_name]
-      @user.birthday = params[:birthday]
+      @user.birthday = nil
       @user.role = nil
       @user.merchant_name = nil
       @user.owner_fname = nil
@@ -26,9 +26,9 @@ class MobileLoginController < ApplicationController
       @user.balance = 0.0
       @user.user_type = "C"
       @user.password = params[:password_digest]
-      @user.question_1 = params[:user][:question_1]
-      @user.question_2 = params[:user][:question_2]
-      @user.question_3 = params[:user][:question_3]
+      # @user.question_1 = params[:user][:question_1]
+      # @user.question_2 = params[:user][:question_2]
+      # @user.question_3 = params[:user][:question_3]
       #all fields that should be null (nil) or 0
        if @user.save
          render json: {"Registration" => "Created Successfully"}

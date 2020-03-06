@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       @user = User.new
       @user.f_name = params[:user][:f_name].capitalize
       @user.l_name = params[:user][:l_name].capitalize
-      @user.birthday = nil #params[:user][:birthday]
+      @user.birthday = nil#params[:user][:birthday(1i)], params[:user][:birthday(2i)], params[:user][:birthday(3i)]
       @user.role = nil
       @user.merchant_name = nil
       @user.owner_fname = nil
