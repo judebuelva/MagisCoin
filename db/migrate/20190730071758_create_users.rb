@@ -13,6 +13,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.float :balance
       t.string :user_type
+      t.string :password_digest
+      t.string :question_1
+      t.string :question_2
+      t.string :question_3
 
       t.timestamps
     end

@@ -18,7 +18,7 @@ class User < ApplicationRecord
   	validates :balance, presence: true, numericality: {greater_than_or_equal_to: 0}, numericality: {less_than_or_equal_to: 10000}
   	validates :user_type, presence: true
     validates :password_digest, presence: true
-    # validates :question_1, presence: true
-    # validates :question_2, presence: true
-    # validates :question_3, presence: true
+    validates :question_1, presence: true
+    validates :question_2, presence: true
+    validates :question_3, presence: true
 end

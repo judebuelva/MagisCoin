@@ -7,6 +7,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.string :purchase_type
       t.float :amount
       t.datetime :time_recorded
+      t.integer :ReferenceNo
 
       t.timestamps
     end

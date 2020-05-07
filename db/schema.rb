@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_130146) do
+ActiveRecord::Schema.define(version: 2020_05_02_113332) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "buy_loads", force: :cascade do |t|
     t.integer "send_id"
@@ -72,9 +75,9 @@ ActiveRecord::Schema.define(version: 2020_02_10_130146) do
     t.string "purchase_type"
     t.float "amount"
     t.datetime "time_recorded"
+    t.integer "ReferenceNo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ReferenceNo"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,16 +89,16 @@ ActiveRecord::Schema.define(version: 2020_02_10_130146) do
     t.string "owner_fname"
     t.string "owner_lname"
     t.string "email"
-    t.integer "contact_num"
+    t.bigint "contact_num"
     t.string "address"
     t.float "balance"
     t.string "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "question_1"
     t.string "question_2"
     t.string "question_3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

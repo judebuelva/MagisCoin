@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+    root 'users#index'
+
     get 'users/showqr' => 'users#showqr', :as => "show_qr"
     post 'users/showqr' => 'users#show_qr'
 
