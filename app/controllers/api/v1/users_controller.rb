@@ -6,7 +6,6 @@ def index
       format.json {render :json => @users.to_json, :status => :ok}
     end
   end
-end
 
 def create
 end
